@@ -1,12 +1,23 @@
-import { Animated, StatusBar, StyleSheet, View } from 'react-native'
+import {
+    Animated,
+    StatusBar,
+    StyleSheet,
+    View
+} from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
-import { RootState, AppDispatch, fetchProducts, fetchCategories } from '../redux'
+import {
+    RootState,
+    AppDispatch,
+    fetchProducts,
+    fetchCategories
+} from '../redux'
 import { FastNotification, ProductItem } from '../components'
 import { ListCategory, HomeHeader } from '../components'
 import { useSelector, useDispatch } from 'react-redux'
 import Spinner from 'react-native-spinkit'
 import { WINDOW_HEIGHT } from '../utils/display'
 import { colors } from '../constants'
+import PopulateProductFlatlist from '../components/common/PopulateProductFlatlist'
 
 const ListProductScreen = () => {
     const productList = useSelector((state: RootState) => {
@@ -25,8 +36,8 @@ const ListProductScreen = () => {
 
     const scrollY = useRef(new Animated.Value(0)).current
     const translateHeader = scrollY.interpolate({
-        inputRange: [0, 170],
-        outputRange: [0, -170],
+        inputRange: [0, 180],
+        outputRange: [0, -180],
         extrapolate: 'clamp'
     })
 
@@ -51,6 +62,7 @@ const ListProductScreen = () => {
                 }
             ]}>
                 <HomeHeader />
+                <PopulateProductFlatlist />
                 <ListCategory />
             </Animated.View>
             {!loading ? <Animated.FlatList
@@ -62,7 +74,7 @@ const ListProductScreen = () => {
                 }}
                 ListHeaderComponent={() => (
                     <View style={{
-                        height: 260,
+                        height: 400,
                         width: 1,
                     }} />
                 )}
@@ -103,8 +115,8 @@ const styles = StyleSheet.create({
         top: 0,
         zIndex: 10,
         width: '100%',
-        height: 270,
+        height: 420,
+        backgroundColor: colors.BACKGROUND_DEFAULT,
         justifyContent: 'space-between',
-        backgroundColor: colors.BACKGROUND_DEFAULT
     }
 })

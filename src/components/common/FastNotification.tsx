@@ -28,7 +28,6 @@ const FastNotification = ({ show, setShow }: any) => {
             duration: 1000,
             toValue: 1,
             useNativeDriver: true,
-            easing: Easing.bounce
         }).start(() => {
             Animated.timing(animated, {
                 duration: 1000,

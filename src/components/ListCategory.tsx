@@ -85,8 +85,9 @@ export default React.memo(ListCategory)
 
 const styles = StyleSheet.create({
     container: {
-        height: 95,
+        height: 105,
         width: '100%',
+        paddingVertical: 5
     },
     title: {
         paddingHorizontal: 15,

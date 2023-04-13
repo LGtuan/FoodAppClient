@@ -35,7 +35,7 @@ const checkout = createAsyncThunk(
 const initialState = {
     products: [] as ProductOrderItem[],
     loading: false,
-    error: ''
+    notify: ''
 }
 
 const orderSlice = createSlice({
@@ -43,7 +43,14 @@ const orderSlice = createSlice({
     initialState,
     reducers: {
         addProduct: (state, action: PayloadAction<ProductOrderItem>) => {
-            state.products.unshift(action.payload)
+            let productOrder =
+                state.products.find(item => item.product._id == action.payload.product._id)
+            if (productOrder) {
+                productOrder.quantity += action.payload.quantity
+            }
+            else {
+                state.products.unshift(action.payload)
+            }
         },
         removeProduct: (state, action) => {
             let index = action.payload
@@ -66,12 +73,15 @@ const orderSlice = createSlice({
         builder
             .addCase(checkout.pending, (state) => {
                 state.loading = true
+                state.notify = 'Vui lòng đợi'
             })
             .addCase(checkout.fulfilled, (state) => {
                 state.loading = false
+                state.notify = 'Thanh toán thành công'
             })
             .addCase(checkout.rejected, (state) => {
                 state.loading = false
+                state.notify = 'Thanh toán thất bại'
             })
     }
 })

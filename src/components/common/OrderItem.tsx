@@ -46,25 +46,26 @@ const OrderItem: React.FC<Props> = ({ item, index, history = false }) => {
             style={styles.textBold}
           >{product.name}</Text>
           <View style={styles.infoInsideWrapper}>
-            {!history && <View style={{
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}>
-              <TouchableOpacity onPress={onIncrement}>
-                <Icon name='add-circle-outline' size={24} />
-              </TouchableOpacity>
-              <Text style={[styles.textBold, { fontSize: 16, paddingHorizontal: 6 }]}>
-                {
-                  quantity >= 10 ? quantity : '0' + quantity
-                }
-              </Text>
-              <TouchableOpacity onPress={onReduce}>
-                <Icon name='remove-circle-outline' size={24} />
-              </TouchableOpacity>
-            </View>}
-            <View>
-              <Text style={{ fontWeight: '600' }}>Số lượng: {item.quantity}</Text>
-            </View>
+            {history ?
+              <View>
+                <Text style={{ fontWeight: '600' }}>Số lượng: {item.quantity}</Text>
+              </View> :
+              <View style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+                <TouchableOpacity onPress={onIncrement}>
+                  <Icon name='add-circle-outline' size={24} />
+                </TouchableOpacity>
+                <Text style={[styles.textBold, { fontSize: 16, paddingHorizontal: 6 }]}>
+                  {
+                    quantity >= 10 ? quantity : '0' + quantity
+                  }
+                </Text>
+                <TouchableOpacity onPress={onReduce}>
+                  <Icon name='remove-circle-outline' size={24} />
+                </TouchableOpacity>
+              </View>}
             <View style={{ alignItems: 'flex-end', justifyContent: 'center' }}>
               <Text>{product.price / 1000}k</Text>
               <Text

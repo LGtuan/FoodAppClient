@@ -6,6 +6,7 @@ import SignUpScreen from "./SignUpScreen";
 import ProfileScreen from "./ProfileScreen";
 import OrdersHistoryScreen from "./OrdersHistoryScreen";
 import HistoryDetailsScreen from "./HistoryDetailsScreen";
+import FavoriteScreen from "./FavoriteScreen";
 
 export {
     ListProductScreen,
@@ -15,5 +16,6 @@ export {
     SignUpScreen,
     ProfileScreen,
     OrdersHistoryScreen,
-    HistoryDetailsScreen
+    HistoryDetailsScreen,
+    FavoriteScreen
 }

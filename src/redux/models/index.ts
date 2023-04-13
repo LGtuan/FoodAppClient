@@ -4,7 +4,7 @@ export interface ProductModel {
     name: string,
     cartId: string,
     image: string,
-    quantity: number,
+    numOrder: number,
     price: number,
     content: string
 }

@@ -84,8 +84,8 @@ const ProductDetailsScreen: React.FC<any> = ({ navigation, route }) => {
                             </View>
                             <View style={styles.vertLine} />
                             <View style={styles.infoItem}>
-                                <Text style={{ fontSize: 15 }}>Số lượng</Text>
-                                <Text style={styles.textBold} > {item.quantity}</Text>
+                                <Text style={{ fontSize: 15 }}>Đã bán</Text>
+                                <Text style={styles.textBold} > {item.numOrder}</Text>
                             </View>
                         </View>
                         <View style={styles.footerInfoContainer}>

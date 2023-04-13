@@ -1,7 +1,7 @@
 import { View, TouchableOpacity, Animated } from 'react-native'
 import React, { useEffect, useRef } from 'react'
 import { BottomTabBarButtonProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { ListProductScreen, ProfileScreen, OrderScreen } from '../screens'
+import { ListProductScreen, ProfileScreen, OrderScreen, FavoriteScreen } from '../screens'
 import { Icons } from '../components/common/Icon'
 import { Icon } from '../components'
 
@@ -35,12 +35,12 @@ const tabArr: ButtonTab[] = [
         component: OrderScreen
     },
     {
-        route: 'ListProduct2',
-        label: 'Home2',
-        type: Icons.Ionicons,
-        activeIcon: 'home',
-        inActiveIcon: 'home-outline',
-        component: ProfileScreen
+        route: 'Favorite',
+        label: 'Favorite',
+        type: Icons.MaterialIcons,
+        activeIcon: 'favorite',
+        inActiveIcon: 'favorite-outline',
+        component: FavoriteScreen
     },
     {
         route: 'Profile',

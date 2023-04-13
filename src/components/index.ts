@@ -8,6 +8,7 @@ import Loader from './common/Loader'
 import OrderItem from './common/OrderItem'
 import FastNotification from './common/FastNotification'
 import HistoryItem from './common/HistoryItem'
+import HorizontalProductItem from './common/HorizontalProductItem'
 import { Icons } from './common/Icon'
 
 export {
@@ -21,5 +22,6 @@ export {
     OrderItem,
     FastNotification,
     HistoryItem,
-    Icons
+    Icons,
+    HorizontalProductItem
 }
