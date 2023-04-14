@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux'
 interface Props {
   item: ProductOrderItem,
   index: number,
-  history: boolean
+  history?: boolean
 }
 
 const OrderItem: React.FC<Props> = ({ item, index, history = false }) => {

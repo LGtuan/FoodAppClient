@@ -13,7 +13,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux'
 import { AppDispatch, RootState, setWrong } from '../redux'
 import { Text } from 'react-native-paper'
-import { OrangeButton } from '../components'
+import { FastNotification, OrangeButton } from '../components'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Stack = createNativeStackNavigator()
@@ -60,6 +60,7 @@ const RootNavigation = () => {
                 </View>
             </View>}
             <NavigationContainer ref={navigationRef}>
+                <FastNotification />
                 <Stack.Navigator >
                     <Stack.Screen
                         name='SignIn'

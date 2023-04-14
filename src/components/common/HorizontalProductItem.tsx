@@ -1,6 +1,6 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { ProductModel, addProduct } from '../../redux'
+import { ProductModel, addProduct, setFastNotifi } from '../../redux'
 import { WINDOW_WIDTH } from '../../utils/display'
 import { URL } from '../../utils/service'
 import { useNavigation } from '@react-navigation/native'
@@ -8,11 +8,10 @@ import OrangeButton from './OrangeButton'
 import { useDispatch } from 'react-redux'
 
 interface ProductProps {
-    item: ProductModel,
-    changeShow: () => void
+    item: ProductModel
 }
 
-const HorizontalProductItem: React.FC<ProductProps> = ({ item, changeShow }) => {
+const HorizontalProductItem: React.FC<ProductProps> = ({ item }) => {
 
     const { navigate } = (useNavigation() as any)
     const dispatch = useDispatch()
@@ -23,7 +22,12 @@ const HorizontalProductItem: React.FC<ProductProps> = ({ item, changeShow }) => 
 
     const onAddProduct = () => {
         dispatch(addProduct({ product: item, quantity: 1 }))
-        changeShow()
+        dispatch(setFastNotifi({
+            show: true,
+            content: 'Thêm vào giỏ hàng thành công',
+            route: 'Order',
+            btnText: 'Thanh toán'
+        }))
     }
 
     return (

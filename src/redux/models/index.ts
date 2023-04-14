@@ -6,7 +6,7 @@ export interface ProductModel {
     image: string,
     numOrder: number,
     price: number,
-    content: string
+    content: string,
 }
 
 export interface CategoryModel {
@@ -17,11 +17,17 @@ export interface CategoryModel {
 }
 
 export interface UserModel {
-    _id?: string,
+    _id: string,
     name?: string,
     email: string,
     token?: string,
-    password?: string
+    password?: string,
+    numsNotification: {
+        profile: number,
+        favoriteFood: number,
+        favoriteOrder: number
+    },
+    favoriteProductIds: string[]
 }
 
 export interface ProductOrderItem {
@@ -34,4 +40,11 @@ export interface OrderModel {
     products: ProductOrderItem[]
     createdAt?: number,
     status?: number
+}
+
+export interface FastNotifiModel {
+    content?: string,
+    btnText?: string,
+    show: boolean,
+    route?: string
 }

@@ -22,6 +22,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Spinner from 'react-native-spinkit'
+import { USER_URL } from '../utils'
 
 const SignInScreen: React.FC<any> = ({ navigation }) => {
 
@@ -35,13 +36,21 @@ const SignInScreen: React.FC<any> = ({ navigation }) => {
     const dispatch = useDispatch<AppDispatch>()
 
     useEffect(() => {
-        AsyncStorage.getItem('user')
+        AsyncStorage.getItem('accout')
             .then((value: any) => {
-                let user = JSON.parse(value)
-                if (user) {
-                    if (user.token) {
-                        dispatch(setUser(user))
-                        navigateToHome()
+                let accout = JSON.parse(value)
+                if (accout) {
+                    if (accout.token) {
+                        fetch(USER_URL + '/' + accout._id, {
+                            method: 'GET'
+                        }).then(res => res.json())
+                            .then(json => {
+                                if (json.user) {
+                                    dispatch(setUser(json.user))
+                                    navigateToHome()
+                                }
+                            })
+                            .catch(e => console.log(e))
                     }
                 }
                 let myTimeout = setTimeout(() => {
@@ -76,8 +85,8 @@ const SignInScreen: React.FC<any> = ({ navigation }) => {
         } else if (!validateEmail(email)) {
             dispatch(setError('Email không đúng định dạng!'))
         } else {
-            let data: UserModel = { email, password }
-            dispatch(login({ user: data, navigateToHome }))
+            let accout = { email, password }
+            dispatch(login({ accout, navigateToHome }))
         }
     }
 

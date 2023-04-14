@@ -49,4 +49,4 @@ const Icon: React.FC<IconProps> = ({ type = Icons.MaterialIcons, name, color = '
     )
 }
 
-export default Icon
+export default React.memo(Icon)

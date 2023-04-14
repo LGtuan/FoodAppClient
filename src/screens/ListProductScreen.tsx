@@ -4,14 +4,14 @@ import {
     StyleSheet,
     View
 } from 'react-native'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import {
     RootState,
     AppDispatch,
     fetchProducts,
     fetchCategories
 } from '../redux'
-import { FastNotification, ProductItem } from '../components'
+import { ProductItem } from '../components'
 import { ListCategory, HomeHeader } from '../components'
 import { useSelector, useDispatch } from 'react-redux'
 import Spinner from 'react-native-spinkit'
@@ -30,20 +30,14 @@ const ListProductScreen = () => {
     const loading = useSelector((state: RootState) => state.productsSlide.loading)
     const dispatch = useDispatch<AppDispatch>()
 
-    const [showFastNotify, setShowFastNotify] = useState(false)
-
     // const flatListRef: MutableRefObject<FlatList<ProductModel> | null> = useRef<FlatList<ProductModel>>(null);
 
     const scrollY = useRef(new Animated.Value(0)).current
     const translateHeader = scrollY.interpolate({
-        inputRange: [0, 180],
-        outputRange: [0, -180],
+        inputRange: [0, 320],
+        outputRange: [0, -320],
         extrapolate: 'clamp'
     })
-
-    const changeShow = () => {
-        setShowFastNotify(true)
-    }
 
     useEffect(() => {
         dispatch(fetchProducts())
@@ -52,7 +46,6 @@ const ListProductScreen = () => {
 
     return (
         <View style={styles.container}>
-            <FastNotification show={showFastNotify} setShow={setShowFastNotify} />
             <Animated.View style={[
                 styles.headerContainer, {
                     transform: [
@@ -70,7 +63,7 @@ const ListProductScreen = () => {
                 contentContainerStyle={{
                     rowGap: 22,
                     paddingBottom: 90,
-                    minHeight: WINDOW_HEIGHT + 260,
+                    minHeight: WINDOW_HEIGHT + 320,
                 }}
                 ListHeaderComponent={() => (
                     <View style={{
@@ -88,7 +81,7 @@ const ListProductScreen = () => {
                 numColumns={2}
                 data={productList}
                 renderItem={({ item }) => (
-                    <ProductItem item={item} changeShow={changeShow} />
+                    <ProductItem item={item} />
                 )}
                 showsVerticalScrollIndicator={false}
             /> : <View style={{
@@ -103,7 +96,7 @@ const ListProductScreen = () => {
     )
 }
 
-export default ListProductScreen
+export default React.memo(ListProductScreen)
 
 const styles = StyleSheet.create({
     container: {

@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React from 'react'
 
 interface Props {
-    text: string,
+    text?: string,
     leftIcon?: JSX.Element,
     rightIcon?: JSX.Element,
     buttonStyle?: any,

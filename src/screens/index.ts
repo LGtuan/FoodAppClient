@@ -7,6 +7,7 @@ import ProfileScreen from "./ProfileScreen";
 import OrdersHistoryScreen from "./OrdersHistoryScreen";
 import HistoryDetailsScreen from "./HistoryDetailsScreen";
 import FavoriteScreen from "./FavoriteScreen";
+import FoodFavoriteScreen from "./FoodFavoriteScreen";
 
 export {
     ListProductScreen,
@@ -17,5 +18,6 @@ export {
     ProfileScreen,
     OrdersHistoryScreen,
     HistoryDetailsScreen,
-    FavoriteScreen
+    FavoriteScreen,
+    FoodFavoriteScreen
 }

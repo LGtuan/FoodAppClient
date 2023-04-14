@@ -4,14 +4,14 @@ import { URL } from '../utils/service'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export const login = createAsyncThunk(
-    'user/login', async ({ user, navigateToHome }: any) => {
+    'user/login', async ({ accout, navigateToHome }: any) => {
         try {
             const res = await fetch(URL + '/api/login', {
                 method: 'POST',
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(user)
+                body: JSON.stringify(accout)
             })
 
             if (res.status == 401) {
@@ -20,9 +20,11 @@ export const login = createAsyncThunk(
                 return { error: 'Tài khoản không tồn tại hoặc sai mật khẩu!' }
             } else if (res.status == 200) {
                 let json = await res.json()
-                await AsyncStorage.setItem('user', JSON.stringify(json.user))
+                let user = json.user
+                await AsyncStorage.setItem('accout', JSON.stringify({ _id: user._id, token: user.token }))
+
                 navigateToHome()
-                return json.user
+                return user
             }
 
         } catch (error: any) {
@@ -61,7 +63,13 @@ const initialState = {
         name: '',
         password: '',
         email: '',
-        token: ''
+        token: '',
+        numsNotification: {
+            profile: 2,
+            favoriteFood: 3,
+            favoriteOrder: 4
+        },
+        favoriteProductIds: []
     } as UserModel,
     loading: false,
     error: ''
@@ -76,6 +84,30 @@ const userSlice = createSlice({
         },
         setError: (state, action) => {
             state.error = action.payload
+        },
+        clearNumsNotification: (state, action) => {
+            let profile = action.payload.profile
+            let favoriteFood = action.payload.favoriteFood
+            let favoriteOrder = action.payload.favoriteOrder
+
+            if (profile) state.user.numsNotification.profile = 0
+            if (favoriteFood) state.user.numsNotification.favoriteFood = 0
+            if (favoriteOrder) state.user.numsNotification.favoriteOrder = 0
+        },
+        favoriteProduct: (state, action) => {
+            let productId = action.payload
+            if (!state.user.favoriteProductIds.includes(productId)) {
+                state.user.numsNotification.favoriteFood += 1
+                state.user.favoriteProductIds.push(productId)
+            }
+        },
+        unFavoriteProduct: (state, action) => {
+            let productId = action.payload
+            if (state.user.favoriteProductIds.includes(productId)) {
+                let index = state.user.favoriteProductIds.indexOf(productId)
+                state.user.favoriteProductIds.splice(index, 1)
+                state.user.numsNotification.favoriteFood -= 1
+            }
         },
     },
     extraReducers: builder => {
@@ -109,5 +141,5 @@ const userSlice = createSlice({
     }
 })
 
-export const { setError, setUser } = userSlice.actions
+export const { setError, setUser, favoriteProduct, unFavoriteProduct } = userSlice.actions
 export default userSlice.reducer

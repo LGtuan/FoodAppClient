@@ -1,9 +1,12 @@
-import { View, TouchableOpacity, Animated } from 'react-native'
+import { View, TouchableOpacity, Animated, Text } from 'react-native'
 import React, { useEffect, useRef } from 'react'
 import { BottomTabBarButtonProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { ListProductScreen, ProfileScreen, OrderScreen, FavoriteScreen } from '../screens'
 import { Icons } from '../components/common/Icon'
 import { Icon } from '../components'
+import { colors } from '../constants'
+import { useSelector } from 'react-redux'
+import { RootState } from '../redux'
 
 const BottomTab = createBottomTabNavigator()
 const TABBAR_HEIEGHT = 60
@@ -14,7 +17,8 @@ interface ButtonTab {
     type: any,
     activeIcon: string,
     inActiveIcon: string,
-    component: React.FC<any>
+    component: React.FC<any>,
+    badge?: number
 }
 
 const tabArr: ButtonTab[] = [
@@ -24,7 +28,8 @@ const tabArr: ButtonTab[] = [
         type: Icons.Ionicons,
         activeIcon: 'fast-food',
         inActiveIcon: 'fast-food-outline',
-        component: ListProductScreen
+        component: ListProductScreen,
+        badge: 0
     },
     {
         route: 'Order',
@@ -32,7 +37,8 @@ const tabArr: ButtonTab[] = [
         type: Icons.Ionicons,
         activeIcon: 'basket',
         inActiveIcon: 'basket-outline',
-        component: OrderScreen
+        component: OrderScreen,
+        badge: 1
     },
     {
         route: 'Favorite',
@@ -40,7 +46,8 @@ const tabArr: ButtonTab[] = [
         type: Icons.MaterialIcons,
         activeIcon: 'favorite',
         inActiveIcon: 'favorite-outline',
-        component: FavoriteScreen
+        component: FavoriteScreen,
+        badge: 1
     },
     {
         route: 'Profile',
@@ -48,7 +55,8 @@ const tabArr: ButtonTab[] = [
         type: Icons.Ionicons,
         activeIcon: 'happy',
         inActiveIcon: 'happy-outline',
-        component: ProfileScreen
+        component: ProfileScreen,
+        badge: 1
     },
 ]
 
@@ -128,6 +136,20 @@ const TabBarButton: React.FC<TabBarButtonProps> = (props) => {
                         { scale: scaleBtn }
                     ]
                 }}>
+                {(item.badge != 0 && !focused) && <View style={{
+                    position: 'absolute',
+                    borderRadius: 15,
+                    backgroundColor: colors.DEFAULT_ORANGE,
+                    zIndex: 10,
+                    width: 18,
+                    height: 18,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    top: 0,
+                    right: 0
+                }}>
+                    <Text style={{ color: 'white' }}>{item.badge}</Text>
+                </View>}
                 <TouchableOpacity activeOpacity={0} style={{ padding: 10 }} onPress={onPress}>
                     <Icon type={item.type}
                         name={focused ? item.activeIcon : item.inActiveIcon}
@@ -151,6 +173,17 @@ const TabBarButton: React.FC<TabBarButtonProps> = (props) => {
 }
 
 const HomeNavigation = () => {
+
+    const { numsNotification } = useSelector((state: RootState) => state.userSlice.user)
+    const numOrderNotifi = useSelector((state: RootState) => {
+        if (state.orderSlice.products.length > 0) return 1
+        return 0
+    })
+
+    tabArr[1].badge = numOrderNotifi
+    tabArr[2].badge = numsNotification.favoriteFood + numsNotification.favoriteOrder
+    tabArr[3].badge = numsNotification.profile
+
     return (
         <BottomTab.Navigator screenOptions={{
             headerShown: false,
@@ -159,8 +192,8 @@ const HomeNavigation = () => {
                 borderTopRightRadius: 40,
                 borderTopLeftRadius: 40,
                 position: 'absolute',
-                backgroundColor: '#e9f1f9ff'
-            },
+                backgroundColor: 'white'
+            }
         }}
         >
             {tabArr.map((item) => (
@@ -172,7 +205,7 @@ const HomeNavigation = () => {
                         tabBarButton: (props) => (
                             <TabBarButton buttonProps={props} item={item} />
                         ),
-                        tabBarShowLabel: false
+                        tabBarShowLabel: false,
                     }}
                 />
             ))}

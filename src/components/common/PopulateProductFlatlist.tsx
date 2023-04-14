@@ -22,7 +22,7 @@ const PopulateProductFlatlist = () => {
                     paddingEnd: 15
                 }}
                 renderItem={({ item }) => (
-                    <HorizontalProductItem item={item} changeShow={() => { }} />
+                    <HorizontalProductItem item={item} />
                 )}
                 horizontal
                 showsHorizontalScrollIndicator={false}

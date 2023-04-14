@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { ProductOrderItem } from './models'
 import { ORDER_URL } from '../utils'
-import { setWrong } from './appSlice'
+import { setFastNotifi, setWrong } from './appSlice'
 
 const checkout = createAsyncThunk(
     'order/postOrder', async (_, { getState, dispatch }: any) => {
@@ -24,6 +24,12 @@ const checkout = createAsyncThunk(
         )
         if (res.status == 200) {
             dispatch(clearOrder())
+            dispatch(setFastNotifi({
+                show: true,
+                btnText: 'Lịch sử',
+                content: 'Thanh toán thành công',
+                route: 'OrderHistory'
+            }))
             return
         } else if (res.status == 401) {
             dispatch(setWrong(true))
