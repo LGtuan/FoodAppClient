@@ -59,7 +59,7 @@ const HistoryDetailsScreen: React.FC<any> = ({ navigation, route }) => {
                     alignItems: 'center',
                     alignSelf: 'baseline'
                 }}>
-                <Icon name='chevron-left' size={42} color={colors.DEFAULT_ORANGE} />
+                <Icon name='chevron-left' size={42} />
                 <Text style={styles.textBold}>Chi tiết</Text>
             </TouchableOpacity>
             <FlatList

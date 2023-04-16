@@ -39,7 +39,16 @@ export interface OrderModel {
     userId?: string,
     products: ProductOrderItem[]
     createdAt?: number,
-    status?: number
+    status?: number,
+}
+
+export interface FavoriteOrderModel {
+    _id: string,
+    userId?: string,
+    products: ProductOrderItem[]
+    createdAt?: number,
+    updatedAt?: number,
+    name?: string
 }
 
 export interface FastNotifiModel {

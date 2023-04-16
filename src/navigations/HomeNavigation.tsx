@@ -1,7 +1,12 @@
 import { View, TouchableOpacity, Animated, Text } from 'react-native'
 import React, { useEffect, useRef } from 'react'
 import { BottomTabBarButtonProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { ListProductScreen, ProfileScreen, OrderScreen, FavoriteScreen } from '../screens'
+import {
+    ListProductScreen,
+    ProfileScreen,
+    OrderScreen,
+    FeatureScreen
+} from '../screens'
 import { Icons } from '../components/common/Icon'
 import { Icon } from '../components'
 import { colors } from '../constants'
@@ -41,12 +46,12 @@ const tabArr: ButtonTab[] = [
         badge: 1
     },
     {
-        route: 'Favorite',
-        label: 'Favorite',
-        type: Icons.MaterialIcons,
-        activeIcon: 'favorite',
-        inActiveIcon: 'favorite-outline',
-        component: FavoriteScreen,
+        route: 'Feature',
+        label: 'Tính năng',
+        type: Icons.MaterialCommunityIcons,
+        activeIcon: 'view-dashboard',
+        inActiveIcon: 'view-dashboard-outline',
+        component: FeatureScreen,
         badge: 1
     },
     {

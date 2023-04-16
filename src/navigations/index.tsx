@@ -8,7 +8,12 @@ import {
     SignInScreen,
     SignUpScreen,
     OrdersHistoryScreen,
-    HistoryDetailsScreen
+    HistoryDetailsScreen,
+    FavoriteFoodScreen,
+    VoucherScreen,
+    FavoriteOrderScreen,
+    FavoriteOrderDetailsScreen,
+
 } from '../screens'
 import { useSelector, useDispatch } from 'react-redux'
 import { AppDispatch, RootState, setWrong } from '../redux'
@@ -93,6 +98,34 @@ const RootNavigation = () => {
                     <Stack.Screen
                         name='HistoryDetails'
                         component={HistoryDetailsScreen}
+                        options={{
+                            animation: 'slide_from_right',
+                            headerShown: false
+                        }} />
+                    <Stack.Screen
+                        name='FavoriteFood'
+                        component={FavoriteFoodScreen}
+                        options={{
+                            animation: 'slide_from_right',
+                            headerShown: false
+                        }} />
+                    <Stack.Screen
+                        name='Voucher'
+                        component={VoucherScreen}
+                        options={{
+                            animation: 'slide_from_right',
+                            headerShown: false
+                        }} />
+                    <Stack.Screen
+                        name='FavoriteOrder'
+                        component={FavoriteOrderScreen}
+                        options={{
+                            animation: 'slide_from_right',
+                            headerShown: false
+                        }} />
+                    <Stack.Screen
+                        name='FavoriteOrderDetails'
+                        component={FavoriteOrderDetailsScreen}
                         options={{
                             animation: 'slide_from_right',
                             headerShown: false

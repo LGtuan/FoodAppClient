@@ -6,8 +6,11 @@ import SignUpScreen from "./SignUpScreen";
 import ProfileScreen from "./ProfileScreen";
 import OrdersHistoryScreen from "./OrdersHistoryScreen";
 import HistoryDetailsScreen from "./HistoryDetailsScreen";
-import FavoriteScreen from "./FavoriteScreen";
-import FoodFavoriteScreen from "./FoodFavoriteScreen";
+import FavoriteFoodScreen from "./FavoriteFoodScreen";
+import VoucherScreen from "./VoucherScreen";
+import FeatureScreen from "./FeatureScreen";
+import FavoriteOrderScreen from "./FavoriteOrderScreen";
+import FavoriteOrderDetailsScreen from "./FavoriteOrderDetailsScreen";
 
 export {
     ListProductScreen,
@@ -18,6 +21,9 @@ export {
     ProfileScreen,
     OrdersHistoryScreen,
     HistoryDetailsScreen,
-    FavoriteScreen,
-    FoodFavoriteScreen
+    FavoriteFoodScreen,
+    VoucherScreen,
+    FavoriteOrderScreen,
+    FeatureScreen,
+    FavoriteOrderDetailsScreen
 }

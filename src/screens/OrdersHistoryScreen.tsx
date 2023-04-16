@@ -55,7 +55,7 @@ const OrdersHistoryScreen: React.FC<any> = ({ navigation }) => {
                     alignItems: 'center',
                     alignSelf: 'baseline'
                 }}>
-                <Icon name='chevron-left' size={42} color={colors.DEFAULT_ORANGE} />
+                <Icon name='chevron-left' size={42} />
                 <Text style={styles.textBold}>Lịch sử đặt hàng</Text>
             </TouchableOpacity>
             <FlatList

@@ -65,9 +65,9 @@ const initialState = {
         email: '',
         token: '',
         numsNotification: {
-            profile: 2,
-            favoriteFood: 3,
-            favoriteOrder: 4
+            profile: 0,
+            favoriteFood: 0,
+            favoriteOrder: 0
         },
         favoriteProductIds: []
     } as UserModel,
@@ -141,5 +141,9 @@ const userSlice = createSlice({
     }
 })
 
-export const { setError, setUser, favoriteProduct, unFavoriteProduct } = userSlice.actions
+export const { setError,
+    setUser,
+    favoriteProduct,
+    unFavoriteProduct,
+    clearNumsNotification } = userSlice.actions
 export default userSlice.reducer

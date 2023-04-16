@@ -9,6 +9,7 @@ import OrderItem from './common/OrderItem'
 import FastNotification from './common/FastNotification'
 import HistoryItem from './common/HistoryItem'
 import HorizontalProductItem from './common/HorizontalProductItem'
+import FavoriteOrderItem from './common/FavoriteOrderItem'
 import { Icons } from './common/Icon'
 
 export {
@@ -23,5 +24,6 @@ export {
     FastNotification,
     HistoryItem,
     Icons,
-    HorizontalProductItem
+    HorizontalProductItem,
+    FavoriteOrderItem
 }

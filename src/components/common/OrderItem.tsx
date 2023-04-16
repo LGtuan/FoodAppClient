@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     elevation: 3,
     marginHorizontal: 15,
-    borderRadius: 20,
+    borderRadius: 16,
   },
   image: {
     width: 120,
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     top: 0,
     right: 0,
     backgroundColor: colors.DEFAULT_ORANGE,
-    borderTopEndRadius: 20,
+    borderTopEndRadius: 18,
     padding: 2,
     borderRadius: 4,
     zIndex: 10

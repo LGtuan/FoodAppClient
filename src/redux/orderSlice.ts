@@ -58,6 +58,9 @@ const orderSlice = createSlice({
                 state.products.unshift(action.payload)
             }
         },
+        setProducts: (state, action: PayloadAction<ProductOrderItem[]>) => {
+            state.products = action.payload
+        },
         removeProduct: (state, action) => {
             let index = action.payload
             if (index >= 0 && index < state.products.length) {
@@ -93,5 +96,5 @@ const orderSlice = createSlice({
 })
 
 export { checkout }
-export const { addProduct, removeProduct, changeQuantity, clearOrder } = orderSlice.actions
+export const { addProduct, setProducts, removeProduct, changeQuantity, clearOrder } = orderSlice.actions
 export default orderSlice.reducer
