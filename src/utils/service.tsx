@@ -1,5 +1,5 @@
 const host = '3000'
-const ip4 = '192.168.1.7'
+const ip4 = '192.168.0.194'
 export const URL = `http://${ip4}:${host}`
 
 export const PRODUCT_URL = `${URL}/api/products`

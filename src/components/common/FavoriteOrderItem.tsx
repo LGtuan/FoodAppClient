@@ -24,7 +24,7 @@ const FavoriteOrderItem: React.FC<Props> = ({ item, onDelete }) => {
     const getNameListProducts = () => {
         let result = ''
         for (let i = 0; i < item.products.length; i++) {
-            result += (item.products[i].product.name + ": " + item.products[i].quantity)
+            result += item.products[i].product.name
             if (i == item.products.length - 1) result += '.'
             else result += ', '
         }
@@ -48,7 +48,7 @@ const FavoriteOrderItem: React.FC<Props> = ({ item, onDelete }) => {
                             <Text style={{ textAlign: 'center' }}>Chưa có ảnh ở order này</Text>
                         </View>
                         : item.products.map((i, index) => {
-                            if (index == 4) return null
+                            if (index >= 4) return null
                             return <Image key={index} source={{ uri: `${URL}${i.product.image}` }} style={styles.image} />
                         })
                     }

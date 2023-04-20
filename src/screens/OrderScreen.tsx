@@ -75,7 +75,10 @@ const OrderScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
             {orderItems.length != 0 ? <FlatList
                 data={orderItems}
                 renderItem={({ item, index }) => (
-                    <OrderItem key={index} item={item} index={index} />
+                    <OrderItem
+                        key={index}
+                        item={item}
+                        index={index} />
                 )}
                 contentContainerStyle={{
                     rowGap: 15,

@@ -4,15 +4,19 @@ import {
     TouchableOpacity,
     FlatList
 } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { colors } from '../constants'
 import { Icon, Icons, OrangeButton, OrderItem } from '../components'
-import { FavoriteOrderModel, setProducts } from '../redux'
-import { useDispatch } from 'react-redux'
+import { FavoriteOrderModel, ProductOrderItem, RootState, setProducts } from '../redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateFavoriteOrder } from '../services'
 
 const FavoriteOrderDetailsScreen = ({ navigation, route }: any) => {
 
-    const item: FavoriteOrderModel = route.params.item
+    const [isChange, setIsChange] = useState(false)
+
+    const [items, setItems] = useState<ProductOrderItem[]>(route.params.item.products)
+    const { token, _id } = useSelector((state: RootState) => state.userSlice.user)
 
     const dispatch = useDispatch()
 
@@ -24,9 +28,22 @@ const FavoriteOrderDetailsScreen = ({ navigation, route }: any) => {
         navigation.navigate('ListProduct')
     }
 
+    const onDelete = (index: number) => {
+        let newItems = [...items]
+        newItems.splice(index, 1)
+        setItems(newItems)
+        if (!isChange) setIsChange(true)
+    }
+
     const navigateToOrderScreen = () => {
-        dispatch(setProducts(item.products))
+        dispatch(setProducts(items))
         navigation.navigate('Order')
+    }
+
+    const updateProduct = () => {
+        let order: FavoriteOrderModel = route.params.item
+        order.products = items
+        updateFavoriteOrder(_id, order, token as string)
     }
 
     return (
@@ -55,13 +72,28 @@ const FavoriteOrderDetailsScreen = ({ navigation, route }: any) => {
                     buttonStyle={{
                         width: 62,
                         height: 30,
+                        backgroundColor: !isChange ? 'gray' : colors.DEFAULT_ORANGE
                     }}
-                    onPress={() => { }} />
+                    extraProps={{
+                        disabled: !isChange,
+                    }}
+                    onPress={updateProduct} />
             </View>
-            {item.products.length != 0 ? <FlatList
-                data={item.products}
+            {items.length != 0 ? <FlatList
+                data={items}
                 renderItem={({ item, index }) => (
-                    <OrderItem key={index} item={item} index={index} />
+                    <View>
+                        <TouchableOpacity onPress={() => {
+                            onDelete(index)
+                        }} style={styles.removeBtn}>
+                            <Icon name='clear' color='white' size={24} />
+                        </TouchableOpacity>
+                        <OrderItem
+                            key={index}
+                            item={item}
+                            index={index}
+                            history={true} />
+                    </View>
                 )}
                 contentContainerStyle={{
                     rowGap: 15,
@@ -108,4 +140,14 @@ const styles = StyleSheet.create({
         fontWeight: '700',
 
     },
+    removeBtn: {
+        position: 'absolute',
+        top: 0,
+        right: 15,
+        backgroundColor: colors.DEFAULT_ORANGE,
+        borderTopEndRadius: 16,
+        padding: 2,
+        borderRadius: 4,
+        zIndex: 10
+    }
 })

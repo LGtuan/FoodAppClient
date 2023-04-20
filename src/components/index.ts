@@ -11,6 +11,7 @@ import HistoryItem from './common/HistoryItem'
 import HorizontalProductItem from './common/HorizontalProductItem'
 import FavoriteOrderItem from './common/FavoriteOrderItem'
 import { Icons } from './common/Icon'
+import BottomOrdersFavoriteModal from './BottomOrdersFavoriteModal'
 
 export {
     ProductItem,
@@ -25,5 +26,6 @@ export {
     HistoryItem,
     Icons,
     HorizontalProductItem,
-    FavoriteOrderItem
+    FavoriteOrderItem,
+    BottomOrdersFavoriteModal
 }

@@ -4,10 +4,15 @@ import {
     TouchableOpacity,
     Image,
     ScrollView,
-    StyleSheet
+    StyleSheet,
+    Modal,
+    Pressable,
+    Animated,
+    Easing,
+    FlatList
 } from 'react-native'
-import React, { useState } from 'react'
-import { Icon, OrangeButton } from '../components'
+import React, { useState, useRef, useEffect } from 'react'
+import { BottomOrdersFavoriteModal, Icon, OrangeButton } from '../components'
 import {
     ProductModel,
     addProduct,
@@ -15,21 +20,48 @@ import {
     setFastNotifi,
     RootState,
     favoriteProduct,
-    unFavoriteProduct
+    unFavoriteProduct,
+    FavoriteOrderModel,
 } from '../redux'
 import { Icons } from '../components/common/Icon'
 import { WINDOW_HEIGHT } from '../utils/display'
 import { URL } from '../utils/service'
 import { colors } from '../constants'
 import { useDispatch, useSelector } from 'react-redux'
+import { getFavoriteOrder } from '../services'
 
 
 const ProductDetailsScreen: React.FC<any> = ({ navigation, route }) => {
-    let item: ProductModel = route.params.item
+    const [popupMenuVisible, setPopupVisible] = useState(false)
+    const [bottomModalVisible, setBottomVisible] = useState(false)
+
+    const item: ProductModel = useRef(route.params.item).current
 
     const dispatch = useDispatch()
-
     const [numOder, setNumOder] = useState(1)
+    const animated = useRef(new Animated.Value(0)).current
+
+    const resizeBox = (toValue: number) => {
+        if (toValue == 1) setPopupVisible(true)
+        Animated.timing(animated, {
+            toValue: toValue,
+            duration: 200,
+            useNativeDriver: true,
+            easing: Easing.linear
+        }).start(() => {
+            if (toValue == 0) setPopupVisible(false)
+        })
+    }
+
+    const scale = animated.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0, 1],
+    })
+
+    const rotate = animated.interpolate({
+        inputRange: [0, 1],
+        outputRange: ['0deg', '270deg']
+    })
 
     const listProductIds = useSelector((state: RootState) => state.userSlice.user.favoriteProductIds)
     const [isFavorite, setIsFavorite] = useState(listProductIds.includes(item._id))
@@ -74,8 +106,83 @@ const ProductDetailsScreen: React.FC<any> = ({ navigation, route }) => {
         }
     }
 
+    const dismissModal = () => {
+        if (popupMenuVisible) setPopupVisible(false)
+    }
+
     return (
         <View style={styles.container}>
+            <BottomOrdersFavoriteModal
+                visible={bottomModalVisible}
+                setVisible={setBottomVisible}
+                productId={item._id} />
+            {/* popup modal */}
+            <Modal
+                visible={popupMenuVisible}
+                onRequestClose={() => {
+                    dismissModal()
+                }}
+                transparent
+                animationType='fade'
+                statusBarTranslucent
+            >
+                <Pressable onPress={() => resizeBox(0)} style={{ flex: 1 }}>
+                    <Animated.View style={{
+                        backgroundColor: 'white',
+                        borderRadius: 6,
+                        position: 'absolute',
+                        right: 25,
+                        top: 60,
+                        width: 230,
+                        zIndex: 5,
+                        transform: [{ scale }],
+                    }}>
+                        <TouchableOpacity style={{
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            padding: 10,
+                        }}
+                        >
+                            <Text style={{ fontSize: 16, color: 'black' }}>Chia sẻ</Text>
+                            <Icon name='share' />
+                        </TouchableOpacity>
+                        <View style={{
+                            height: 1,
+                            width: '95%',
+                            alignSelf: 'center',
+                            backgroundColor: '#3e3e3e69'
+                        }} />
+                        <TouchableOpacity
+                            style={{
+                                flexDirection: 'row',
+                                justifyContent: 'space-between',
+                                padding: 10,
+                            }}
+                            onPress={() => {
+                                setBottomVisible(true)
+                                resizeBox(0)
+                            }}
+                        >
+                            <Text style={{ fontSize: 16, color: 'black' }}>Thêm vào giỏ yêu thích</Text>
+                            <Icon name='add-circle-outline' />
+                        </TouchableOpacity>
+                        <View style={{
+                            height: 1,
+                            width: '95%',
+                            alignSelf: 'center',
+                            backgroundColor: '#3e3e3e69'
+                        }} />
+                        <TouchableOpacity style={{
+                            flexDirection: 'row',
+                            justifyContent: 'space-between',
+                            padding: 10,
+                        }}>
+                            <Text style={{ fontSize: 16, color: 'black' }}>Bình luận</Text>
+                            <Icon name='comment' />
+                        </TouchableOpacity>
+                    </Animated.View>
+                </Pressable>
+            </Modal>
             <View style={{ height: '15%' }}>
                 <View style={{
                     height: '50%',
@@ -98,9 +205,15 @@ const ProductDetailsScreen: React.FC<any> = ({ navigation, route }) => {
                         <TouchableOpacity onPress={onFavorite}>
                             <Icon name={isFavorite ? 'favorite' : 'favorite-outline'} color={isFavorite ? colors.PINK : 'black'} />
                         </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Icon name='more-vert' />
-                        </TouchableOpacity>
+                        <Animated.View style={{
+                            transform: [{
+                                rotate: rotate
+                            }],
+                        }}>
+                            <TouchableOpacity onPress={() => resizeBox(1)}>
+                                <Icon name='more-vert' />
+                            </TouchableOpacity>
+                        </Animated.View>
                     </View>
                 </View>
                 <View style={{ alignItems: 'center' }}>

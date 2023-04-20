@@ -1,4 +1,10 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import {
+    StyleSheet,
+    Text,
+    View,
+    TouchableOpacity,
+    TouchableOpacityProps
+} from 'react-native'
 import React from 'react'
 
 interface Props {
@@ -7,12 +13,14 @@ interface Props {
     rightIcon?: JSX.Element,
     buttonStyle?: any,
     textStyle?: any,
-    onPress: () => void
+    onPress: () => void,
+    extraProps?: TouchableOpacityProps
 }
 
-const OrangeButton: React.FC<Props> = ({ buttonStyle = {}, textStyle = {}, ...props }) => {
+const OrangeButton: React.FC<Props> = ({ extraProps, buttonStyle = {}, textStyle = {}, ...props }) => {
     return (
         <TouchableOpacity
+            {...extraProps}
             onPress={props.onPress}
             style={[styles.btnContainer, buttonStyle]}>
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>

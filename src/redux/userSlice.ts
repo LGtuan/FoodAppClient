@@ -74,7 +74,6 @@ const initialState = {
     loading: false,
     error: ''
 }
-
 const userSlice = createSlice({
     name: 'user',
     initialState,

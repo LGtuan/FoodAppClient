@@ -40,7 +40,7 @@ const FastNotification = () => {
         })
     }, [fastNotifi.show])
 
-    const onNavigateToOrder = () => {
+    const onNavigate = () => {
         if (fastNotifi.route)
             navigate(fastNotifi.route)
     }
@@ -50,7 +50,7 @@ const FastNotification = () => {
             <Text style={styles.content}>{fastNotifi.content}</Text>
             <OrangeButton
                 text={fastNotifi.btnText}
-                onPress={onNavigateToOrder}
+                onPress={onNavigate}
                 rightIcon={<Icon type={Icons.Ionicons} size={15} name='chevron-forward' color={colors.DEFAULT_ORANGE} />}
                 buttonStyle={{ height: 35, width: 115, marginTop: 10, backgroundColor: 'white' }}
                 textStyle={{ fontSize: 15, fontWeight: '700', color: colors.DEFAULT_ORANGE }}
