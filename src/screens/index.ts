@@ -11,6 +11,7 @@ import VoucherScreen from "./VoucherScreen";
 import FeatureScreen from "./FeatureScreen";
 import FavoriteOrderScreen from "./FavoriteOrderScreen";
 import FavoriteOrderDetailsScreen from "./FavoriteOrderDetailsScreen";
+import SearchScreen from './SearchScreen'
 
 export {
     ListProductScreen,
@@ -25,5 +26,6 @@ export {
     VoucherScreen,
     FavoriteOrderScreen,
     FeatureScreen,
-    FavoriteOrderDetailsScreen
+    FavoriteOrderDetailsScreen,
+    SearchScreen
 }

@@ -5,11 +5,21 @@ import {
     View,
     TouchableOpacity,
 } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import Icon, { Icons } from './common/Icon'
+import GrayInput from './common/GrayInput'
+import { useNavigation } from '@react-navigation/native'
+import { useDispatch } from 'react-redux'
+import { AppDispatch, setTxTSearch } from '../redux'
 
 const HomeHeader = () => {
-
+    const [search, setSearch] = useState("");
+    const navigation = useNavigation<any>();
+    const ditpatch = useDispatch<AppDispatch>();
+    const handlerSubmitEdit = () => {
+        ditpatch(setTxTSearch(search));
+        navigation.navigate("SearchScreen")
+    }
     return (
         <Animated.View style={styles.container}>
             <View>
@@ -20,12 +30,12 @@ const HomeHeader = () => {
             </View>
             <View>
                 <TouchableOpacity style={styles.inputWrap} activeOpacity={0.7}>
-                    <Text style={{
-                        flex: 1,
-                        fontWeight: '500',
-                        fontSize: 16
-                    }}>Bạn muốn ăn gì?</Text>
-                    <TouchableOpacity>
+                    <GrayInput extraProps={{
+                        placeholder: "Bạn muốn ăn gì?",
+                        onSubmitEditing: handlerSubmitEdit,
+                        onChangeText: setSearch
+                    }} />
+                    <TouchableOpacity style={{ position: 'absolute', end: 10 }}>
                         <Icon type={Icons.Ionicons} name='ios-search-outline' size={30} color='black' />
                     </TouchableOpacity>
                 </TouchableOpacity>
@@ -49,14 +59,11 @@ const styles = StyleSheet.create({
         color: 'black'
     },
     inputWrap: {
-        backgroundColor: '#ecf1f7',
         borderRadius: 20,
         flexDirection: 'row',
         width: '100%',
         height: 48,
         alignItems: 'center',
-        paddingHorizontal: 10,
         alignSelf: 'center',
-        elevation: 3
     }
 })
