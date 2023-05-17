@@ -13,6 +13,7 @@ import {
     VoucherScreen,
     FavoriteOrderScreen,
     FavoriteOrderDetailsScreen,
+    SearchScreen,
 
 } from '../screens'
 import { useSelector, useDispatch } from 'react-redux'
@@ -130,7 +131,15 @@ const RootNavigation = () => {
                             animation: 'slide_from_right',
                             headerShown: false
                         }} />
+                    <Stack.Screen
+                        name='SearchScreen'
+                        component={SearchScreen}
+                        options={{
+                            animation: 'slide_from_right',
+                            headerShown: false
+                        }} />
                 </Stack.Navigator>
+
             </NavigationContainer>
         </View>
     )

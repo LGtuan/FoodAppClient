@@ -13,6 +13,7 @@ export const fetchProducts = createAsyncThunk(
 
 const initialState = {
     items: [] as ProductModel[],
+    txtSearch:"" as string,
     loading: false,
     error: '' as (string | undefined),
 }
@@ -21,7 +22,9 @@ const productsSlice = createSlice({
     name: 'products',
     initialState,
     reducers: {
-
+        setTxTSearch:(state,action)=>{
+            state.txtSearch =action.payload;
+        }
     },
     extraReducers: builder => {
         builder
@@ -39,5 +42,5 @@ const productsSlice = createSlice({
     }
 })
 
-export const { } = productsSlice.actions
+export const { setTxTSearch} = productsSlice.actions
 export default productsSlice.reducer
