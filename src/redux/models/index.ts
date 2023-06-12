@@ -22,6 +22,7 @@ export interface UserModel {
     email: string,
     token?: string,
     password?: string,
+    image?: string,
     numsNotification: {
         profile: number,
         favoriteFood: number,

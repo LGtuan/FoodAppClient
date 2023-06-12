@@ -188,8 +188,6 @@ const HomeNavigation = () => {
     tabArr[2].badge = (numsNotification?.favoriteFood ?? 0) + (numsNotification?.favoriteOrder ?? 0)
     tabArr[3].badge = numsNotification?.profile ?? 0
 
-    console.log(numsNotification?.favoriteOrder ?? 0)
-
     return (
         <BottomTab.Navigator screenOptions={{
             headerShown: false,

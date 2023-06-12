@@ -7,13 +7,19 @@ import {
     ScrollView,
 } from 'react-native'
 import React, { useState, useEffect } from 'react'
-import { images } from '@constants'
-import { GrayInput, Icon, Loader, OrangeButton, Icons } from '@components'
+import { colors, images, regexs } from '@constants'
+import {
+    GrayInput,
+    Icon,
+    Loading,
+    OrangeButton,
+
+    Icons
+} from '@components'
 import { WINDOW_HEIGHT } from '@utils'
 import {
     AppDispatch,
     RootState,
-    UserModel,
     login,
     setError,
     setUser
@@ -35,7 +41,7 @@ const SignInScreen: React.FC<any> = ({ navigation }) => {
     const dispatch = useDispatch<AppDispatch>()
 
     useEffect(() => {
-        AsyncStorage.getItem('accout')
+        AsyncStorage.getItem('user')
             .then((value: any) => {
                 let accout = JSON.parse(value)
                 if (accout) {
@@ -73,9 +79,7 @@ const SignInScreen: React.FC<any> = ({ navigation }) => {
     const validateEmail = (email: string) => {
         return String(email)
             .toLowerCase()
-            .match(
-                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            );
+            .match(regexs.EMAIL);
     };
 
     const onLogin = () => {
@@ -96,9 +100,8 @@ const SignInScreen: React.FC<any> = ({ navigation }) => {
     }
 
     return (
-        <ScrollView style={{ backgroundColor: 'white' }}>
+        <ScrollView style={{ backgroundColor: colors.BACKGROUND_DEFAULT }}>
             {checking ?
-
                 <View style={{
                     flex: 1,
                     width: '100%',
@@ -109,30 +112,21 @@ const SignInScreen: React.FC<any> = ({ navigation }) => {
                     <Spinner
                         style={{ width: 60, height: 60 }}
                         type='Circle' size={50}
-                        color='#ff2f2f' />
+                        color={colors.DEFAULT_ORANGE} />
                 </View>
                 : <>
-                    {loading && <Loader />}
-                    <View style={{ height: WINDOW_HEIGHT * 0.45 - 24, justifyContent: 'space-around' }}>
-                        <Image source={images['logo']} style={styles.image} />
-                        <View style={{
-                            backgroundColor: '#ff2f2f',
-                            alignSelf: 'baseline',
-                            borderTopEndRadius: 40,
-                            borderBottomEndRadius: 40,
-                            paddingHorizontal: 20,
-                            paddingVertical: 15
-                        }}>
-                            <Text style={{
-                                fontSize: 32,
-                                fontWeight: 'bold',
-                                color: 'white',
-                            }}>Đăng nhập</Text>
-                        </View>
+                    {loading && <Loading />}
+                    <View style={{ marginTop: 250 }}>
+                        <Text style={{
+                            fontSize: 32,
+                            fontWeight: 'bold',
+                            color: colors.TEXT,
+                            paddingStart: 16,
+                        }}>Đăng nhập</Text>
                     </View>
                     <View style={{
                         paddingHorizontal: 15,
-                        height: WINDOW_HEIGHT * 0.55,
+                        height: WINDOW_HEIGHT * 0.6,
                         justifyContent: 'space-around'
                     }}>
                         <View>
@@ -159,21 +153,23 @@ const SignInScreen: React.FC<any> = ({ navigation }) => {
                                 }}
                                 inputWrapStyle={{ marginTop: 15 }}
                             />
-                            <OrangeButton onPress={onLogin} text='Đăng nhập' buttonStyle={{ marginTop: 25 }} />
+                            <OrangeButton onPress={onLogin} text='Đăng nhập' buttonStyle={{ marginTop: 35 }} />
                         </View>
                         <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
                             <Text style={{ color: 'black', fontWeight: 'bold', fontSize: 15 }}>Chưa có tài khoản?</Text>
                             <OrangeButton
                                 onPress={navigateToSignUp}
                                 text='Đăng kí'
-                                buttonStyle={{ width: 80, height: 34, marginHorizontal: 6 }}
+                                buttonStyle={{ width: 85, height: 34, marginHorizontal: 10, paddingTop: 3 }}
                                 textStyle={{ fontSize: 14, paddingBottom: 3 }}
-                                rightIcon={<Icon type={Icons.Feather} name='arrow-right' color='white' size={15} />}
+                                rightIcon={<Icon type={Icons.Feather} name='arrow-right' size={15} />}
                             />
                         </View>
-                    </View></>
+                    </View>
+                    <Image source={images['banner1']} style={styles.banner} />
+                </>
             }
-            <StatusBar backgroundColor='white' barStyle={'dark-content'} />
+            <StatusBar backgroundColor='transparent' translucent barStyle={'dark-content'} />
         </ScrollView>
     )
 }
@@ -201,5 +197,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         alignSelf: 'center',
         elevation: 3,
+    },
+    banner: {
+        position: 'absolute',
+        width: 300, height: 300,
+        top: -80,
+        right: -60,
+        resizeMode: 'contain'
     }
 })

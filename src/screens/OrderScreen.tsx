@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useCallback } from 'react'
 import { FlatList } from 'react-native-gesture-handler'
-import { Icon, Loader, OrangeButton, OrderItem, Icons } from '@components'
+import { Icon, Loading, OrangeButton, OrderItem, Icons } from '@components'
 import { colors } from '@constants'
 import { useSelector, useDispatch } from 'react-redux'
 import { AppDispatch, RootState } from '@redux'
@@ -69,7 +69,7 @@ const OrderScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            {loading && <Loader />}
+            {loading && <Loading />}
             <Text style={styles.title}>Giỏ hàng</Text>
             {orderItems.length != 0 ? <FlatList
                 data={orderItems}

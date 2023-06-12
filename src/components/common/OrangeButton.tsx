@@ -3,16 +3,20 @@ import {
     Text,
     View,
     TouchableOpacity,
-    TouchableOpacityProps
+    TouchableOpacityProps,
+    StyleProp,
+    ViewStyle,
+    TextStyle
 } from 'react-native'
 import React from 'react'
+import { colors } from '@constants'
 
 interface Props {
     text?: string,
     leftIcon?: JSX.Element,
     rightIcon?: JSX.Element,
-    buttonStyle?: any,
-    textStyle?: any,
+    buttonStyle?: StyleProp<ViewStyle>,
+    textStyle?: StyleProp<TextStyle>,
     onPress: () => void,
     extraProps?: TouchableOpacityProps
 }
@@ -38,14 +42,14 @@ const styles = StyleSheet.create({
     btnContainer: {
         width: '100%',
         height: 50,
-        backgroundColor: '#ff4400',
+        backgroundColor: colors.DEFAULT_ORANGE,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 30,
         elevation: 3
     },
     content: {
-        color: 'white',
+        color: colors.TEXT,
         fontSize: 18,
         fontWeight: 'bold',
         paddingHorizontal: 4

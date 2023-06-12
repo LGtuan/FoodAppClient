@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const FineNotification = () => {
+const SomethingSuccess = () => {
     return (
         <View>
-            <Text>FineNotification</Text>
+            <Text>SomethingSuccess</Text>
         </View>
     )
 }
 
-export default FineNotification
+export default SomethingSuccess
 
 const styles = StyleSheet.create({})

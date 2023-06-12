@@ -1,16 +1,17 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { ProductModel, addProduct, setFastNotifi } from '@redux'
-import { WINDOW_WIDTH, URL } from '@utils'
+import { WINDOW_WIDTH } from '@utils'
+import { URL } from '@utils'
 import { useNavigation } from '@react-navigation/native'
-import OrangeButton from './OrangeButton'
+import OrangeButton from './common/OrangeButton'
 import { useDispatch } from 'react-redux'
 
 interface ProductProps {
-    item: ProductModel,
+    item: ProductModel
 }
 
-const ProductItem: React.FC<ProductProps> = ({ item }) => {
+const HorizontalProductItem: React.FC<ProductProps> = ({ item }) => {
 
     const { navigate } = (useNavigation() as any)
     const dispatch = useDispatch()
@@ -30,13 +31,13 @@ const ProductItem: React.FC<ProductProps> = ({ item }) => {
     }
 
     return (
-        <View style={styles.cardContainer}>
+        <View style={{ paddingStart: 15, paddingVertical: 5 }}>
             <TouchableOpacity
                 onPress={navigateToDetails}
                 style={styles.cardWrap}
                 activeOpacity={0.7}>
                 <Image style={styles.image} source={{ uri: `${URL}${item.image}` }} />
-                <View style={styles.footer}>
+                <View style={styles.viewWrap}>
                     <Text
                         numberOfLines={1}
                         ellipsizeMode='tail'
@@ -45,7 +46,7 @@ const ProductItem: React.FC<ProductProps> = ({ item }) => {
                         style={{
                             flexDirection: 'row',
                             justifyContent: 'space-between',
-                            paddingTop: 4
+                            paddingEnd: 10
                         }}>
                         <Text style={styles.price}>{item.price / 1000}k</Text>
                         <OrangeButton
@@ -60,26 +61,21 @@ const ProductItem: React.FC<ProductProps> = ({ item }) => {
     )
 }
 
-export default React.memo(ProductItem)
+export default React.memo(HorizontalProductItem)
 
 const styles = StyleSheet.create({
-    cardContainer: {
-        width: WINDOW_WIDTH / 2 - 7.5,
-        alignItems: 'center',
-        paddingStart: 15,
-    },
     image: {
-        width: WINDOW_WIDTH / 2 - 60,
-        height: WINDOW_WIDTH / 2 - 60,
-        marginHorizontal: 8,
-        marginVertical: 12,
-        resizeMode: 'contain'
+        width: 100,
+        height: 100,
+        margin: 2,
+        resizeMode: 'contain',
     },
     cardWrap: {
+        width: WINDOW_WIDTH * 0.65,
         backgroundColor: 'white',
-        width: '100%',
         alignItems: 'center',
         borderRadius: 12,
+        flexDirection: 'row',
 
         shadowColor: "#000",
         shadowOffset: {
@@ -90,14 +86,6 @@ const styles = StyleSheet.create({
         textShadowRadius: 12,
         elevation: 4,
     },
-    footer: {
-        width: '100%',
-        opacity: 0.9,
-        padding: 6,
-        backgroundColor: '#f8faff',
-        borderBottomEndRadius: 12,
-        borderBottomStartRadius: 12
-    },
     name: {
         color: 'black',
         fontWeight: '500',
@@ -106,5 +94,10 @@ const styles = StyleSheet.create({
     price: {
         color: '#ff2f2f',
         fontWeight: '600'
+    },
+    viewWrap: {
+        flex: 1,
+        height: 60,
+        justifyContent: 'space-between'
     }
 })

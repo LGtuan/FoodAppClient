@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
-import Icon from './Icon'
+import Icon from './common/Icon'
 import { ProductOrderItem, changeQuantity, removeProduct } from '@redux'
 import { colors } from '@constants'
 import { URL } from '@utils'
