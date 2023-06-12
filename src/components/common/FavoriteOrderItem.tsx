@@ -6,11 +6,11 @@ import {
     TouchableOpacity
 } from 'react-native'
 import React from 'react'
-import { FavoriteOrderModel } from '../../redux'
+import { FavoriteOrderModel } from '@redux'
 import Icon from './Icon'
-import { colors } from '../../constants'
+import { colors } from '@constants'
 import { useNavigation } from '@react-navigation/native'
-import { URL } from '../../utils'
+import { URL } from '@utils'
 
 interface Props {
     item: FavoriteOrderModel,

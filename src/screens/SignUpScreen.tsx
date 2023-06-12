@@ -8,12 +8,11 @@ import {
     TouchableOpacity,
 } from 'react-native'
 import React, { useState } from 'react'
-import { images } from '../constants'
-import { GrayInput, Icon, Loader, OrangeButton } from '../components'
-import { Icons } from '../components/common/Icon'
-import { WINDOW_HEIGHT } from '../utils/display'
+import { images } from '@constants'
+import { GrayInput, Icon, Loader, OrangeButton, Icons } from '@components'
+import { WINDOW_HEIGHT } from '@utils'
 import { useSelector, useDispatch } from 'react-redux'
-import { AppDispatch, RootState, setError, register } from '../redux'
+import { AppDispatch, RootState, setError, register } from '@redux'
 
 const SignUpScreen: React.FC<any> = ({ navigation }) => {
 

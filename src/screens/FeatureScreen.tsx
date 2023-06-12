@@ -1,14 +1,15 @@
 import { StyleSheet, Text, View, TouchableOpacity, Image, ScrollView } from 'react-native'
 import React from 'react'
-import { colors, images } from '../constants'
-import { WINDOW_WIDTH } from '../utils'
+import { colors, images } from '@constants'
+import { WINDOW_WIDTH } from '@utils'
 import { useNavigation } from '@react-navigation/native'
 import { useSelector } from 'react-redux'
-import { RootState } from '../redux'
+import { RootState } from '@redux'
 
 const FeatureScreen = () => {
 
-    const { favoriteFood } = useSelector((state: RootState) => state.userSlice.user.numsNotification)
+    const { numsNotification } = useSelector((state: RootState) => state.userSlice.user)
+    const favoriteFood = numsNotification?.favoriteFood ?? 0
     const { navigate } = useNavigation<any>()
 
     return (

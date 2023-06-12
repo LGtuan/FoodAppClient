@@ -15,11 +15,11 @@ import {
     FavoriteOrderDetailsScreen,
     SearchScreen,
 
-} from '../screens'
+} from '@screens'
 import { useSelector, useDispatch } from 'react-redux'
-import { AppDispatch, RootState, setWrong } from '../redux'
+import { AppDispatch, RootState, setWrong } from '@redux'
 import { Text } from 'react-native-paper'
-import { FastNotification, OrangeButton } from '../components'
+import { FastNotification, OrangeButton } from '@components'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Stack = createNativeStackNavigator()

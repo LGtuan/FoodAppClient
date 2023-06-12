@@ -10,7 +10,7 @@ import Icon, { Icons } from './common/Icon'
 import GrayInput from './common/GrayInput'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch } from 'react-redux'
-import { AppDispatch, setTxTSearch } from '../redux'
+import { AppDispatch, setTxTSearch } from '@redux'
 
 const HomeHeader = () => {
     const [search, setSearch] = useState("");

@@ -9,12 +9,12 @@ import {
     Animated
 } from 'react-native'
 import React, { useState, useEffect } from 'react'
-import { WINDOW_HEIGHT } from '../utils'
+import { WINDOW_HEIGHT } from '@utils'
 import OrangeButton from './common/OrangeButton'
-import { FavoriteOrderModel, RootState, setFastNotifi } from '../redux'
+import { FavoriteOrderModel, RootState, setFastNotifi } from '@redux'
 import { useDispatch, useSelector } from 'react-redux'
-import { addProductToFavoriteOrder, getFavoriteOrder } from '../services'
-import { colors } from '../constants'
+import { addProductToFavoriteOrder, getFavoriteOrder } from '@services'
+import { colors } from '@constants'
 
 interface Props {
     visible: boolean,

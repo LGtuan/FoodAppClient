@@ -1,12 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useCallback } from 'react'
 import { FlatList } from 'react-native-gesture-handler'
-import { Icon, Loader, OrangeButton, OrderItem } from '../components'
-import { colors } from '../constants'
+import { Icon, Loader, OrangeButton, OrderItem, Icons } from '@components'
+import { colors } from '@constants'
 import { useSelector, useDispatch } from 'react-redux'
-import { AppDispatch, RootState } from '../redux'
-import { Icons } from '../components/common/Icon'
-import { checkout } from '../redux'
+import { AppDispatch, RootState } from '@redux'
+import { checkout } from '@redux'
 
 const ListFooter: React.FC<any> = ({ foodTotal, onCheckout }) => {
     return (

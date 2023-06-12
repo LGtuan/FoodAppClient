@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { getPopulateProduct } from '../../services'
+import { getPopulateProduct } from '@services'
 import { FlatList } from 'react-native-gesture-handler'
-import { ProductModel } from '../../redux'
+import { ProductModel } from '@redux'
 import HorizontalProductItem from './HorizontalProductItem'
 
 const PopulateProductFlatlist = () => {
