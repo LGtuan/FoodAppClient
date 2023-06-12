@@ -11,6 +11,7 @@ import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Octicons from 'react-native-vector-icons/Octicons';
 import Foundation from 'react-native-vector-icons/Foundation';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
+import Fontisto from 'react-native-vector-icons/Fontisto'
 import { colors } from '@constants';
 
 export const Icons = {
@@ -26,6 +27,7 @@ export const Icons = {
     Octicons,
     Foundation,
     EvilIcons,
+    Fontisto
 }
 
 interface IconProps {

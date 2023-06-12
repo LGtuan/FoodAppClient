@@ -12,6 +12,7 @@ import { RootState, AppDispatch, setCategoryId } from '@redux'
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { URL } from '@utils'
+import { colors } from '@constants'
 
 const ListCategory = () => {
 
@@ -49,7 +50,7 @@ const ListCategory = () => {
                             styles.itemCategory,
                             { marginStart: index == 0 ? 15 : 0 },
                             {
-                                backgroundColor: item._id == categorySellected ? '#ff2f2f' : 'white',
+                                backgroundColor: item._id == categorySellected ? colors.DEFAULT_ORANGE : 'white',
                             }]}>
                         <View style={{
                             padding: 4,
@@ -62,18 +63,11 @@ const ListCategory = () => {
                             style={{
                                 fontSize: 15,
                                 fontWeight: '700',
-                                paddingStart: 3,
-                                color: item._id == categorySellected ? 'white' : 'black'
+                                paddingStart: 5,
+                                color: 'black'
                             }}>{item.name}</Text>
-                        <Text
-                            style={[
-                                styles.badge,
-                                {
-                                    backgroundColor: item._id == categorySellected ? 'white' : '#ff2f2f',
-                                    color: item._id == categorySellected ? '#ff2f2f' : 'white',
-                                }
-                            ]}>{item.numProduct}</Text>
-
+                        {item._id != categorySellected && <Text
+                            style={styles.badge}>{item.numProduct}</Text>}
                     </TouchableOpacity>
                 ))}
             </ScrollView>
@@ -118,7 +112,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         width: 20,
         height: 20,
-        elevation: 5
+        elevation: 5,
+        backgroundColor: colors.DEFAULT_ORANGE
     },
     image: {
         width: 20,

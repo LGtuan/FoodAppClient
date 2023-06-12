@@ -35,7 +35,7 @@ const OrderItem: React.FC<Props> = ({ item, index, history = false }) => {
   return (
     <View style={styles.container}>
       {!history && <TouchableOpacity onPress={onDeleteItem} style={styles.removeBtn}>
-        <Icon name='clear' color='white' size={24} />
+        <Icon name='clear' size={23} />
       </TouchableOpacity>}
       <View style={{ flexDirection: 'row' }}>
         <Image source={{ uri: `${URL}${product.image}` }} style={styles.image} />

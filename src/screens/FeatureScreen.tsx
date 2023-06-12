@@ -63,9 +63,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: colors.BACKGROUND_DEFAULT,
+        paddingTop: 24
     },
     title: {
-        color: colors.DEFAULT_ORANGE,
+        color: colors.TEXT,
         fontSize: 24,
         fontWeight: '700',
         paddingHorizontal: 15,

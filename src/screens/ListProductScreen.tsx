@@ -32,8 +32,8 @@ const ListProductScreen = () => {
 
     const scrollY = useRef(new Animated.Value(0)).current
     const translateHeader = scrollY.interpolate({
-        inputRange: [0, 320],
-        outputRange: [0, -320],
+        inputRange: [0, 344],
+        outputRange: [0, -344],
         extrapolate: 'clamp'
     })
 
@@ -48,7 +48,6 @@ const ListProductScreen = () => {
                 styles.headerContainer, {
                     transform: [
                         { translateY: translateHeader },
-
                     ],
                 }
             ]}>
@@ -61,6 +60,7 @@ const ListProductScreen = () => {
                 contentContainerStyle={{
                     rowGap: 22,
                     paddingBottom: 90,
+                    marginTop: 32,
                     minHeight: WINDOW_HEIGHT + 320,
                 }}
                 ListHeaderComponent={() => (
@@ -89,7 +89,6 @@ const ListProductScreen = () => {
             }}>
                 <Spinner color='#ff2f2f' size={60} type='Circle' />
             </View>}
-            <StatusBar backgroundColor={colors.BACKGROUND_DEFAULT} barStyle='dark-content' />
         </View>
     )
 }
@@ -99,7 +98,7 @@ export default React.memo(ListProductScreen)
 const styles = StyleSheet.create({
     container: {
         backgroundColor: colors.BACKGROUND_DEFAULT,
-        flex: 1
+        flex: 1,
     },
     headerContainer: {
         position: 'absolute',

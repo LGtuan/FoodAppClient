@@ -6,6 +6,7 @@ import { URL } from '@utils'
 import { useNavigation } from '@react-navigation/native'
 import OrangeButton from './common/OrangeButton'
 import { useDispatch } from 'react-redux'
+import { colors } from '@constants'
 
 interface ProductProps {
     item: ProductModel
@@ -87,12 +88,12 @@ const styles = StyleSheet.create({
         elevation: 4,
     },
     name: {
-        color: 'black',
+        color: colors.TEXT,
         fontWeight: '500',
         fontSize: 14,
     },
     price: {
-        color: '#ff2f2f',
+        color: colors.ORANGE_DARK,
         fontWeight: '600'
     },
     viewWrap: {

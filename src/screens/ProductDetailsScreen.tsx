@@ -9,7 +9,6 @@ import {
     Pressable,
     Animated,
     Easing,
-    FlatList
 } from 'react-native'
 import React, { useState, useRef, useEffect } from 'react'
 import { BottomOrdersFavoriteModal, Icon, OrangeButton } from '@components'
@@ -21,13 +20,11 @@ import {
     RootState,
     favoriteProduct,
     unFavoriteProduct,
-    FavoriteOrderModel,
 } from '@redux'
 import { Icons } from '@components'
 import { WINDOW_HEIGHT, URL } from '@utils'
 import { colors } from '@constants'
 import { useDispatch, useSelector } from 'react-redux'
-import { getFavoriteOrder } from '@services'
 
 
 const ProductDetailsScreen: React.FC<any> = ({ navigation, route }) => {
@@ -62,7 +59,7 @@ const ProductDetailsScreen: React.FC<any> = ({ navigation, route }) => {
         outputRange: ['0deg', '270deg']
     })
 
-    const listProductIds = useSelector((state: RootState) => state.userSlice.user.favoriteProductIds)
+    const listProductIds = useSelector((state: RootState) => state.userSlice?.user?.favoriteProductIds) ?? []
     const [isFavorite, setIsFavorite] = useState(listProductIds.includes(item._id))
 
     const onIncrement = () => {
@@ -298,7 +295,8 @@ const styles = StyleSheet.create({
     container: {
         width: '100%',
         height: '100%',
-        backgroundColor: colors.BACKGROUND_DEFAULT
+        backgroundColor: colors.BACKGROUND_DEFAULT,
+        paddingTop: 12
     },
     infoItem: {
         alignItems: 'center',
