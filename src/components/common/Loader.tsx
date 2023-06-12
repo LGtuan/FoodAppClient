@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import Spinner from 'react-native-spinkit'
-import { WINDOW_HEIGHT, WINDOW_WIDTH } from '../../utils/display'
+import { WINDOW_HEIGHT, WINDOW_WIDTH } from '@utils'
 
 const Loader = () => {
     return (

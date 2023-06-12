@@ -5,11 +5,11 @@ import {
     FlatList
 } from 'react-native'
 import React, { useState } from 'react'
-import { colors } from '../constants'
-import { Icon, Icons, OrangeButton, OrderItem } from '../components'
-import { FavoriteOrderModel, ProductOrderItem, RootState, setProducts } from '../redux'
+import { colors } from '@constants'
+import { Icon, Icons, OrangeButton, OrderItem } from '@components'
+import { FavoriteOrderModel, ProductOrderItem, RootState, setProducts } from '@redux'
 import { useDispatch, useSelector } from 'react-redux'
-import { updateFavoriteOrder } from '../services'
+import { updateFavoriteOrder } from '@services'
 
 const FavoriteOrderDetailsScreen = ({ navigation, route }: any) => {
 

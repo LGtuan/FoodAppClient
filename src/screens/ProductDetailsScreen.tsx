@@ -12,7 +12,7 @@ import {
     FlatList
 } from 'react-native'
 import React, { useState, useRef, useEffect } from 'react'
-import { BottomOrdersFavoriteModal, Icon, OrangeButton } from '../components'
+import { BottomOrdersFavoriteModal, Icon, OrangeButton } from '@components'
 import {
     ProductModel,
     addProduct,
@@ -22,13 +22,12 @@ import {
     favoriteProduct,
     unFavoriteProduct,
     FavoriteOrderModel,
-} from '../redux'
-import { Icons } from '../components/common/Icon'
-import { WINDOW_HEIGHT } from '../utils/display'
-import { URL } from '../utils/service'
-import { colors } from '../constants'
+} from '@redux'
+import { Icons } from '@components'
+import { WINDOW_HEIGHT, URL } from '@utils'
+import { colors } from '@constants'
 import { useDispatch, useSelector } from 'react-redux'
-import { getFavoriteOrder } from '../services'
+import { getFavoriteOrder } from '@services'
 
 
 const ProductDetailsScreen: React.FC<any> = ({ navigation, route }) => {

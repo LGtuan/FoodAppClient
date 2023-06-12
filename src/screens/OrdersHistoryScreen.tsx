@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { ORDER_URL } from '../utils'
+import { ORDER_URL } from '@utils'
 import { useDispatch, useSelector } from 'react-redux'
-import { OrderModel, RootState, setWrong } from '../redux'
-import { HistoryItem, Icon } from '../components'
-import { colors } from '../constants'
+import { OrderModel, RootState, setWrong } from '@redux'
+import { HistoryItem, Icon } from '@components'
+import { colors } from '@constants'
 
 const OrdersHistoryScreen: React.FC<any> = ({ navigation }) => {
 

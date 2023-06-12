@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
-import { OrangeButton } from '../components'
+import { OrangeButton } from '@components'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const ProfileScreen: React.FC<any> = ({ navigation }): JSX.Element => {

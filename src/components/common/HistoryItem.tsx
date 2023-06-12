@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { colors } from '../../constants'
-import { OrderModel } from '../../redux'
-import { URL } from '../../utils'
+import { colors } from '@constants'
+import { OrderModel } from '@redux'
+import { URL } from '@utils'
 
 interface Props {
     orderItem: OrderModel,

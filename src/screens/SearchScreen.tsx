@@ -1,11 +1,11 @@
 import { StyleSheet, Text, View, TouchableOpacity, FlatList, TextInput } from 'react-native'
 import React, { useState, useEffect } from 'react'
-import { colors } from '../constants'
+import { colors } from '@constants'
 import { useNavigation } from '@react-navigation/native'
-import { GrayInput, Icon, ProductItem } from '../components'
+import { GrayInput, Icon, ProductItem } from '@components'
 import { useSelector } from 'react-redux'
-import { RootState } from '../redux'
-import { WINDOW_WIDTH } from '../utils'
+import { RootState } from '@redux'
+import { WINDOW_WIDTH } from '@utils'
 const SearchScreen = () => {
     const txtSearch = useSelector((state: RootState) => state.productsSlide.txtSearch)
     const [search, setSearch] = useState(txtSearch);

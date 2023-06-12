@@ -12,6 +12,7 @@ import HorizontalProductItem from './common/HorizontalProductItem'
 import FavoriteOrderItem from './common/FavoriteOrderItem'
 import { Icons } from './common/Icon'
 import BottomOrdersFavoriteModal from './BottomOrdersFavoriteModal'
+import PopulateProductFlatlist from './common/PopulateProductFlatlist'
 
 export {
     ProductItem,
@@ -27,5 +28,6 @@ export {
     Icons,
     HorizontalProductItem,
     FavoriteOrderItem,
-    BottomOrdersFavoriteModal
+    BottomOrdersFavoriteModal,
+    PopulateProductFlatlist
 }

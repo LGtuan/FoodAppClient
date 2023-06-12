@@ -6,12 +6,11 @@ import {
     ProfileScreen,
     OrderScreen,
     FeatureScreen
-} from '../screens'
-import { Icons } from '../components/common/Icon'
-import { Icon } from '../components'
-import { colors } from '../constants'
+} from '@screens'
+import { Icons, Icon } from '@components'
+import { colors } from '@constants'
 import { useSelector } from 'react-redux'
-import { RootState } from '../redux'
+import { RootState } from '@redux'
 
 const BottomTab = createBottomTabNavigator()
 const TABBAR_HEIEGHT = 60
@@ -43,7 +42,7 @@ const tabArr: ButtonTab[] = [
         activeIcon: 'basket',
         inActiveIcon: 'basket-outline',
         component: OrderScreen,
-        badge: 1
+        badge: 0
     },
     {
         route: 'Feature',
@@ -52,7 +51,7 @@ const tabArr: ButtonTab[] = [
         activeIcon: 'view-dashboard',
         inActiveIcon: 'view-dashboard-outline',
         component: FeatureScreen,
-        badge: 1
+        badge: 0
     },
     {
         route: 'Profile',
@@ -61,7 +60,7 @@ const tabArr: ButtonTab[] = [
         activeIcon: 'happy',
         inActiveIcon: 'happy-outline',
         component: ProfileScreen,
-        badge: 1
+        badge: 0
     },
 ]
 
@@ -185,9 +184,11 @@ const HomeNavigation = () => {
         return 0
     })
 
-    tabArr[1].badge = numOrderNotifi
-    tabArr[2].badge = numsNotification.favoriteFood + numsNotification.favoriteOrder
-    tabArr[3].badge = numsNotification.profile
+    tabArr[1].badge = numOrderNotifi ?? 0
+    tabArr[2].badge = (numsNotification?.favoriteFood ?? 0) + (numsNotification?.favoriteOrder ?? 0)
+    tabArr[3].badge = numsNotification?.profile ?? 0
+
+    console.log(numsNotification?.favoriteOrder ?? 0)
 
     return (
         <BottomTab.Navigator screenOptions={{

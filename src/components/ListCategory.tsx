@@ -8,10 +8,10 @@ import {
     Image,
     View
 } from 'react-native'
-import { RootState, AppDispatch, setCategoryId } from '../redux'
+import { RootState, AppDispatch, setCategoryId } from '@redux'
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { URL } from '../utils/service'
+import { URL } from '@utils'
 
 const ListCategory = () => {
 

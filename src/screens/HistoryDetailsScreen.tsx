@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { colors } from '../constants'
-import { Icon, Icons, Loader, OrangeButton, OrderItem } from '../components'
-import { ProductOrderItem } from '../redux'
+import { colors } from '@constants'
+import { Icon, Icons, Loader, OrangeButton, OrderItem } from '@components'
+import { ProductOrderItem } from '@redux'
 
 const ListFooter: React.FC<any> = ({ foodTotal }) => {
     return (

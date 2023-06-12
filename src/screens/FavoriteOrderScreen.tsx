@@ -9,16 +9,16 @@ import {
 } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { FavoriteOrderModel, RootState } from '../redux'
-import { addFavoriteOrder, deleteFavoriteOrder, getFavoriteOrder } from '../services'
+import { FavoriteOrderModel, RootState } from '@redux'
+import { addFavoriteOrder, deleteFavoriteOrder, getFavoriteOrder } from '@services'
 import {
     FavoriteOrderItem,
     GrayInput,
     Icon,
     Icons,
     OrangeButton,
-} from '../components'
-import { colors } from '../constants'
+} from '@components'
+import { colors } from '@constants'
 import Spinner from 'react-native-spinkit'
 
 const FavoriteOrderScreen: React.FC<any> = ({ navigation }) => {

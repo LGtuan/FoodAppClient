@@ -1,12 +1,12 @@
 import { StyleSheet, Text, Animated } from 'react-native'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import Icon, { Icons } from './Icon'
 import OrangeButton from './OrangeButton'
-import { colors } from '../../constants'
-import { WINDOW_WIDTH } from '../../utils'
+import { colors } from '@constants'
+import { WINDOW_WIDTH } from '@utils'
 import { useSelector, useDispatch } from 'react-redux'
-import { RootState, setFastNotifi } from '../../redux'
+import { RootState, setFastNotifi } from '@redux'
 
 const FastNotification = () => {
     const animated = useRef(new Animated.Value(0)).current

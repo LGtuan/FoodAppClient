@@ -7,10 +7,9 @@ import {
     ScrollView,
 } from 'react-native'
 import React, { useState, useEffect } from 'react'
-import { images } from '../constants'
-import { GrayInput, Icon, Loader, OrangeButton } from '../components'
-import { Icons } from '../components/common/Icon'
-import { WINDOW_HEIGHT } from '../utils/display'
+import { images } from '@constants'
+import { GrayInput, Icon, Loader, OrangeButton, Icons } from '@components'
+import { WINDOW_HEIGHT } from '@utils'
 import {
     AppDispatch,
     RootState,
@@ -18,11 +17,11 @@ import {
     login,
     setError,
     setUser
-} from '../redux'
+} from '@redux'
 import { useSelector, useDispatch } from 'react-redux'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Spinner from 'react-native-spinkit'
-import { USER_URL } from '../utils'
+import { USER_URL } from '@utils'
 
 const SignInScreen: React.FC<any> = ({ navigation }) => {
 

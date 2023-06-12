@@ -10,15 +10,13 @@ import {
     AppDispatch,
     fetchProducts,
     fetchCategories
-} from '../redux'
-import { ProductItem } from '../components'
-import { ListCategory, HomeHeader } from '../components'
+} from '@redux'
+import { ProductItem } from '@components'
+import { ListCategory, HomeHeader, PopulateProductFlatlist } from '@components'
 import { useSelector, useDispatch } from 'react-redux'
 import Spinner from 'react-native-spinkit'
-import { WINDOW_HEIGHT } from '../utils/display'
-import { colors } from '../constants'
-import PopulateProductFlatlist from '../components/common/PopulateProductFlatlist'
-
+import { WINDOW_HEIGHT } from '@utils'
+import { colors } from '@constants'
 const ListProductScreen = () => {
     const productList = useSelector((state: RootState) => {
 

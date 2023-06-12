@@ -7,10 +7,10 @@ import {
 } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState, clearNumsNotification } from '../redux'
-import { getFavoriteProduct } from '../services'
-import { Icon, Icons, OrangeButton, ProductItem } from '../components'
-import { colors } from '../constants'
+import { RootState, clearNumsNotification } from '@redux'
+import { getFavoriteProduct } from '@services'
+import { Icon, Icons, OrangeButton, ProductItem } from '@components'
+import { colors } from '@constants'
 import Spinner from 'react-native-spinkit'
 
 const FavoriteFoodScreen: React.FC<any> = ({ navigation }) => {
