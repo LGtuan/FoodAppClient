@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const FineNotification = () => {
+const EditProfileScreen = () => {
     return (
         <View>
-            <Text>FineNotification</Text>
+            <Text>EditProfileScreen</Text>
         </View>
     )
 }
 
-export default FineNotification
+export default EditProfileScreen
 
 const styles = StyleSheet.create({})

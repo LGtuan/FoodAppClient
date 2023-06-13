@@ -21,7 +21,7 @@ export const login = createAsyncThunk(
             } else if (res.status == 200) {
                 let json = await res.json()
                 let user = json.user
-                await AsyncStorage.setItem('accout', JSON.stringify({ _id: user._id, token: user.token }))
+                await AsyncStorage.setItem('user', JSON.stringify({ _id: user._id, token: user.token }))
 
                 navigateToHome()
                 return user

@@ -51,9 +51,9 @@ const FastNotification = () => {
             <OrangeButton
                 text={fastNotifi.btnText}
                 onPress={onNavigate}
-                rightIcon={<Icon type={Icons.Ionicons} size={15} name='chevron-forward' color={colors.DEFAULT_ORANGE} />}
+                rightIcon={<Icon type={Icons.Ionicons} size={15} name='chevron-forward' color={'black'} />}
                 buttonStyle={{ height: 35, width: 115, marginTop: 10, backgroundColor: 'white' }}
-                textStyle={{ fontSize: 15, fontWeight: '700', color: colors.DEFAULT_ORANGE }}
+                textStyle={{ fontSize: 15, fontWeight: '700', color: 'black' }}
             />
         </Animated.View>
 
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         borderTopLeftRadius: 30,
         borderBottomLeftRadius: 30,
-        backgroundColor: '#1ca21cd5',
+        backgroundColor: '#00c600',
         right: -WINDOW_WIDTH,
         top: '15%',
         zIndex: 15,

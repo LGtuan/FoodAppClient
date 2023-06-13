@@ -120,7 +120,7 @@ const TabBarButton: React.FC<TabBarButtonProps> = (props) => {
         >
             <Animated.View
                 style={{
-                    backgroundColor: focused ? '#ff2f2f' : 'transparent',
+                    backgroundColor: focused ? colors.DEFAULT_ORANGE : 'transparent',
                     position: 'absolute',
                     width: 60,
                     height: 60,
@@ -152,18 +152,18 @@ const TabBarButton: React.FC<TabBarButtonProps> = (props) => {
                     top: 0,
                     right: 0
                 }}>
-                    <Text style={{ color: 'white' }}>{item.badge}</Text>
+                    <Text style={{ color: colors.TEXT, fontSize: 12 }}>{item.badge}</Text>
                 </View>}
                 <TouchableOpacity activeOpacity={0} style={{ padding: 10 }} onPress={onPress}>
                     <Icon type={item.type}
                         name={focused ? item.activeIcon : item.inActiveIcon}
-                        color={focused ? 'white' : '#ff2f2f'}
+                        color={focused ? 'white' : colors.ORANGE_DARK}
                         size={30}
                     />
                 </TouchableOpacity>
             </Animated.View>
             <Animated.Text style={{
-                color: '#ff2f2f',
+                color: colors.TEXT,
                 position: 'absolute',
                 bottom: -15,
                 fontWeight: '700',
@@ -187,8 +187,6 @@ const HomeNavigation = () => {
     tabArr[1].badge = numOrderNotifi ?? 0
     tabArr[2].badge = (numsNotification?.favoriteFood ?? 0) + (numsNotification?.favoriteOrder ?? 0)
     tabArr[3].badge = numsNotification?.profile ?? 0
-
-    console.log(numsNotification?.favoriteOrder ?? 0)
 
     return (
         <BottomTab.Navigator screenOptions={{

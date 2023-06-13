@@ -7,15 +7,18 @@ import { useSelector } from 'react-redux'
 import { RootState } from '@redux'
 import { WINDOW_WIDTH } from '@utils'
 const SearchScreen = () => {
+
     const txtSearch = useSelector((state: RootState) => state.productsSlide.txtSearch)
     const [search, setSearch] = useState(txtSearch);
     const navigation = useNavigation<any>();
     const regex = new RegExp(search, "i");
+
     const product = useSelector((state: RootState) => {
         return state.productsSlide.items.filter((item) => {
             return regex.test(item.name)
         })
     })
+
     const onGoBack = () => {
         if (navigation.canGoBack()) navigation.goBack()
     }
@@ -30,7 +33,9 @@ const SearchScreen = () => {
                     alignSelf: 'baseline'
                 }}>
                 <Icon name='chevron-left' size={42} />
-                <TextInput value={search} onChangeText={(text) => setSearch(text)} style={{ width: WINDOW_WIDTH - 20 }} />
+                <TextInput value={search}
+                    onChangeText={(text) => setSearch(text)}
+                    style={{ width: WINDOW_WIDTH - 20 }} />
             </TouchableOpacity>
 
             <FlatList

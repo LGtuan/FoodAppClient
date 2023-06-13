@@ -4,6 +4,7 @@ import { getPopulateProduct } from '@services'
 import { FlatList } from 'react-native-gesture-handler'
 import { ProductModel } from '@redux'
 import HorizontalProductItem from './HorizontalProductItem'
+import { colors } from '@constants'
 
 const PopulateProductFlatlist = () => {
 
@@ -41,7 +42,7 @@ const styles = StyleSheet.create({
     title: {
         paddingHorizontal: 15,
         fontSize: 18,
-        color: 'black',
+        color: colors.TEXT,
         fontWeight: '700'
     },
 })

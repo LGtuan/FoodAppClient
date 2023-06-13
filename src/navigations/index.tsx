@@ -14,6 +14,7 @@ import {
     FavoriteOrderScreen,
     FavoriteOrderDetailsScreen,
     SearchScreen,
+    EditProfileScreen,
 
 } from '@screens'
 import { useSelector, useDispatch } from 'react-redux'
@@ -67,76 +68,66 @@ const RootNavigation = () => {
             </View>}
             <NavigationContainer ref={navigationRef}>
                 <FastNotification />
-                <Stack.Navigator >
+                <Stack.Navigator screenOptions={{ headerShown: false }}>
                     <Stack.Screen
                         name='SignIn'
-                        options={{ headerShown: false }}
                         component={SignInScreen}
                     />
                     <Stack.Screen
                         name='SignUp'
-                        options={{ headerShown: false, animation: 'slide_from_right' }}
+                        options={{ animation: 'slide_from_right' }}
                         component={SignUpScreen}
                     />
                     <Stack.Screen
                         name='HomeScreen'
-                        options={{ headerShown: false }}
                         component={HomeNavigation} />
                     <Stack.Screen
                         name='ProductDetails'
                         component={ProductDetailsScreen}
-                        options={{
-                            animation: 'slide_from_right',
-                            headerShown: false
-                        }} />
+                        options={{ animation: 'slide_from_right' }} />
                     <Stack.Screen
                         name='OrderHistory'
                         component={OrdersHistoryScreen}
-                        options={{
-                            animation: 'slide_from_right',
-                            headerShown: false
-                        }} />
+                        options={{ animation: 'slide_from_right' }} />
                     <Stack.Screen
                         name='HistoryDetails'
                         component={HistoryDetailsScreen}
-                        options={{
-                            animation: 'slide_from_right',
-                            headerShown: false
-                        }} />
+                        options={{ animation: 'slide_from_right' }} />
                     <Stack.Screen
                         name='FavoriteFood'
                         component={FavoriteFoodScreen}
                         options={{
                             animation: 'slide_from_right',
-                            headerShown: false
                         }} />
                     <Stack.Screen
                         name='Voucher'
                         component={VoucherScreen}
                         options={{
                             animation: 'slide_from_right',
-                            headerShown: false
                         }} />
                     <Stack.Screen
                         name='FavoriteOrder'
                         component={FavoriteOrderScreen}
                         options={{
                             animation: 'slide_from_right',
-                            headerShown: false
                         }} />
                     <Stack.Screen
                         name='FavoriteOrderDetails'
                         component={FavoriteOrderDetailsScreen}
                         options={{
                             animation: 'slide_from_right',
-                            headerShown: false
                         }} />
                     <Stack.Screen
                         name='SearchScreen'
                         component={SearchScreen}
                         options={{
                             animation: 'slide_from_right',
-                            headerShown: false
+                        }} />
+                    <Stack.Screen
+                        name='EditProfileScreen'
+                        component={EditProfileScreen}
+                        options={{
+                            animation: 'slide_from_right',
                         }} />
                 </Stack.Navigator>
 

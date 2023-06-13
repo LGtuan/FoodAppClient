@@ -7,7 +7,7 @@ import {
 } from 'react-native'
 import React from 'react'
 import { FavoriteOrderModel } from '@redux'
-import Icon from './Icon'
+import Icon from './common/Icon'
 import { colors } from '@constants'
 import { useNavigation } from '@react-navigation/native'
 import { URL } from '@utils'

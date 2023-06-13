@@ -8,8 +8,8 @@ import {
     TouchableOpacity,
 } from 'react-native'
 import React, { useState } from 'react'
-import { images } from '@constants'
-import { GrayInput, Icon, Loader, OrangeButton, Icons } from '@components'
+import { colors, images } from '@constants'
+import { GrayInput, Icon, Loading, OrangeButton, Icons } from '@components'
 import { WINDOW_HEIGHT } from '@utils'
 import { useSelector, useDispatch } from 'react-redux'
 import { AppDispatch, RootState, setError, register } from '@redux'
@@ -63,83 +63,75 @@ const SignUpScreen: React.FC<any> = ({ navigation }) => {
     }
 
     return (
-        <ScrollView style={{ backgroundColor: 'white' }}>
-
-            {loading && <Loader />}
-
-            <TouchableOpacity onPress={onGoBack}
-                style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    position: 'absolute',
-                    padding: 3,
-                    zIndex: 10
-                }}>
-                <Icon name='arrow-back-ios' />
-                <Text style={{ fontSize: 18, fontWeight: '700', color: 'black' }}>Đăng nhập</Text>
-            </TouchableOpacity>
-            <View style={{ height: WINDOW_HEIGHT * 0.45 - 24, justifyContent: 'space-around' }}>
-                <Image source={images['logo']} style={styles.image} />
-                <View style={{
-                    backgroundColor: '#ff2f2f',
-                    alignSelf: 'baseline',
-                    borderTopEndRadius: 40,
-                    borderBottomEndRadius: 40,
-                    paddingHorizontal: 20,
-                    paddingVertical: 15
-                }}>
+        <ScrollView style={{ backgroundColor: colors.BACKGROUND_DEFAULT }}>
+            {loading && <Loading />}
+            <>
+                <TouchableOpacity onPress={onGoBack}
+                    style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        position: 'absolute',
+                        paddingStart: 3,
+                        zIndex: 10,
+                        paddingTop: 24
+                    }}>
+                    <Icon size={20} name='arrow-back-ios' />
+                    <Text style={{ fontSize: 18, fontWeight: '700', color: colors.TEXT }}>Đăng nhập</Text>
+                </TouchableOpacity>
+                <View style={{ marginTop: 250 }}>
                     <Text style={{
                         fontSize: 32,
                         fontWeight: 'bold',
-                        color: 'white',
+                        color: colors.TEXT,
+                        paddingStart: 16,
                     }}>Đăng kí</Text>
                 </View>
-            </View>
-            <View style={{
-                paddingHorizontal: 15,
-                height: WINDOW_HEIGHT * 0.55,
-                paddingTop: 35
-            }}>
-                <View>
-                    <Text style={{ color: 'red', fontWeight: 'bold' }}>{error}</Text>
-                    <GrayInput
-                        leftIcon={<Icon name='email' size={25} color='#7a7a7a' />}
-                        extraProps={{
-                            placeholder: 'Email',
-                            value: email,
-                            onChangeText: setEmail,
-                            onFocus: () => dispatch(setError(''))
-                        }}
-                        inputWrapStyle={{ marginTop: 15 }}
-                    />
-                    <GrayInput
-                        leftIcon={<Icon type={Icons.Ionicons} name='ios-lock-closed' size={26} color='#7a7a7a' />}
-                        extraProps={{
-                            placeholder: 'Mật khẩu',
-                            value: password,
-                            onChangeText: setPassword,
-                            secureTextEntry: true,
-                            onFocus: () => dispatch(setError(''))
-                        }}
-                        inputWrapStyle={{ marginTop: 15 }}
-                    />
-                    <GrayInput
-                        leftIcon={<Icon type={Icons.Ionicons} name='ios-lock-closed' size={26} color='#7a7a7a' />}
-                        extraProps={{
-                            placeholder: 'Xác thự mật khẩu',
-                            value: password2,
-                            onChangeText: setPassword2,
-                            secureTextEntry: true,
-                            onFocus: () => dispatch(setError(''))
-                        }}
-                        inputWrapStyle={{ marginTop: 15 }}
-                    />
+                <View style={{
+                    paddingHorizontal: 15,
+                    height: WINDOW_HEIGHT * 0.6,
+                    paddingTop: 35
+                }}>
+                    <View>
+                        <Text style={{ color: 'red', fontWeight: 'bold' }}>{error}</Text>
+                        <GrayInput
+                            leftIcon={<Icon name='email' size={25} color='#7a7a7a' />}
+                            extraProps={{
+                                placeholder: 'Email',
+                                value: email,
+                                onChangeText: setEmail,
+                                onFocus: () => dispatch(setError(''))
+                            }}
+                            inputWrapStyle={{ marginTop: 15 }}
+                        />
+                        <GrayInput
+                            leftIcon={<Icon type={Icons.Ionicons} name='ios-lock-closed' size={26} color='#7a7a7a' />}
+                            extraProps={{
+                                placeholder: 'Mật khẩu',
+                                value: password,
+                                onChangeText: setPassword,
+                                secureTextEntry: true,
+                                onFocus: () => dispatch(setError(''))
+                            }}
+                            inputWrapStyle={{ marginTop: 15 }}
+                        />
+                        <GrayInput
+                            leftIcon={<Icon type={Icons.Ionicons} name='ios-lock-closed' size={26} color='#7a7a7a' />}
+                            extraProps={{
+                                placeholder: 'Xác thự mật khẩu',
+                                value: password2,
+                                onChangeText: setPassword2,
+                                secureTextEntry: true,
+                                onFocus: () => dispatch(setError(''))
+                            }}
+                            inputWrapStyle={{ marginTop: 15 }}
+                        />
 
-                    <OrangeButton onPress={onSignUp} text='Đăng kí' buttonStyle={{ marginTop: 25 }} />
+                        <OrangeButton onPress={onSignUp} text='Đăng kí' buttonStyle={{ marginTop: 35 }} />
+                    </View>
                 </View>
-            </View>
-
-            <StatusBar barStyle={'dark-content'} />
+                <Image source={images['banner1']} style={styles.banner} />
+            </>
+            <StatusBar backgroundColor='transparent' translucent barStyle={'dark-content'} />
         </ScrollView>
     )
 }
@@ -157,4 +149,11 @@ const styles = StyleSheet.create({
         resizeMode: 'cover',
         alignSelf: 'center'
     },
+    banner: {
+        position: 'absolute',
+        width: 300, height: 300,
+        top: -80,
+        right: -60,
+        resizeMode: 'contain'
+    }
 })
