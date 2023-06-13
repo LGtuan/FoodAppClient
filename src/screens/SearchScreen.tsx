@@ -32,10 +32,10 @@ const SearchScreen = () => {
                     alignItems: 'center',
                     alignSelf: 'baseline'
                 }}>
-                <Icon name='chevron-left' size={42} />
+                <Icon name='chevron-left' />
                 <TextInput value={search}
                     onChangeText={(text) => setSearch(text)}
-                    style={{ width: WINDOW_WIDTH - 20 }} />
+                    style={{ width: WINDOW_WIDTH - 20, fontSize: 20, fontWeight: 'bold' }} />
             </TouchableOpacity>
 
             <FlatList
@@ -59,7 +59,8 @@ export default SearchScreen
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.BACKGROUND_DEFAULT
+        backgroundColor: colors.BACKGROUND_DEFAULT,
+        paddingTop: 24
     },
     textBold: {
         fontSize: 16,

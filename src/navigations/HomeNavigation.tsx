@@ -152,7 +152,7 @@ const TabBarButton: React.FC<TabBarButtonProps> = (props) => {
                     top: 0,
                     right: 0
                 }}>
-                    <Text style={{ color: colors.TEXT, fontSize: 12 }}>{item.badge}</Text>
+                    <Text style={{ color: colors.TEXT, fontSize: 12, fontWeight: '700', paddingBottom: 1 }}>{item.badge}</Text>
                 </View>}
                 <TouchableOpacity activeOpacity={0} style={{ padding: 10 }} onPress={onPress}>
                     <Icon type={item.type}
@@ -163,7 +163,7 @@ const TabBarButton: React.FC<TabBarButtonProps> = (props) => {
                 </TouchableOpacity>
             </Animated.View>
             <Animated.Text style={{
-                color: colors.TEXT,
+                color: colors.ORANGE_DARK,
                 position: 'absolute',
                 bottom: -15,
                 fontWeight: '700',

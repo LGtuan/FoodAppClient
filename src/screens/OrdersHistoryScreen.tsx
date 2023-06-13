@@ -55,11 +55,14 @@ const OrdersHistoryScreen: React.FC<any> = ({ navigation }) => {
                     alignItems: 'center',
                     alignSelf: 'baseline'
                 }}>
-                <Icon name='chevron-left' size={42} />
+                <Icon name='chevron-left' />
                 <Text style={styles.textBold}>Lịch sử đặt hàng</Text>
             </TouchableOpacity>
             <FlatList
                 data={data}
+                contentContainerStyle={{
+                    paddingTop: 16
+                }}
                 renderItem={({ item, index }) => (
                     <HistoryItem orderItem={item} onPress={() => navigateHistoryDetails(index)} />
                 )}
@@ -73,7 +76,8 @@ export default OrdersHistoryScreen
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.BACKGROUND_DEFAULT
+        backgroundColor: colors.BACKGROUND_DEFAULT,
+        paddingTop: 24
     },
     textBold: {
         fontSize: 20,

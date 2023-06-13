@@ -68,7 +68,7 @@ const HistoryItem: React.FC<Props> = ({ orderItem, onPress }) => {
                     </View>
                     <View style={{ alignItems: 'flex-end', justifyContent: 'flex-end' }}>
                         <Text style={{ color: status == 0 ? '#0d6bb8' : 'green', fontWeight: '500' }}>{status == 0 ? 'Đang giao' : 'Đã giao'}</Text>
-                        <Text style={[styles.textBold, { color: colors.DEFAULT_ORANGE }]}>-{sumPrice / 1000}k</Text>
+                        <Text style={[styles.textBold, { color: colors.ORANGE_DARK }]}>-{sumPrice / 1000}k</Text>
                     </View>
                 </View>
             </View>

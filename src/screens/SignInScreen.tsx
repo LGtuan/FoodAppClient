@@ -24,6 +24,10 @@ import {
     setError,
     setUser
 } from '@redux'
+import {
+    Svg,
+    Path
+} from 'react-native-svg'
 import { useSelector, useDispatch } from 'react-redux'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Spinner from 'react-native-spinkit'
@@ -167,6 +171,21 @@ const SignInScreen: React.FC<any> = ({ navigation }) => {
                         </View>
                     </View>
                     <Image source={images['banner1']} style={styles.banner} />
+                    <View style={{
+                        position: 'absolute',
+                        width: '100%',
+                        backgroundColor: colors.DEFAULT_ORANGE,
+                        height: 245,
+                        zIndex: -1
+                    }} />
+                    <Svg viewBox="0 0 80 80" style={{
+                        width: 200, height: 200,
+                        position: 'absolute',
+                        top: 200,
+                        zIndex: -1
+                    }} >
+                        <Path fill={colors.DEFAULT_ORANGE} d="M38.4,-58.4C52.7,-58.2,69.3,-53.9,75,-43.5C80.8,-33.1,75.6,-16.5,75.2,-0.2C74.8,16.1,79.1,32.1,74.1,43.8C69.2,55.5,54.8,62.8,40.9,69.9C27,77,13.5,83.8,1.3,81.6C-11,79.4,-21.9,68.2,-33.2,59.6C-44.4,51,-55.8,44.9,-62.8,35.4C-69.9,25.9,-72.4,13,-73.1,-0.4C-73.8,-13.7,-72.5,-27.4,-63.6,-33.6C-54.6,-39.7,-37.9,-38.3,-26.1,-39.8C-14.2,-41.3,-7.1,-45.8,2.5,-50.1C12,-54.4,24.1,-58.5,38.4,-58.4Z" />
+                    </Svg>
                 </>
             }
             <StatusBar backgroundColor='transparent' translucent barStyle={'dark-content'} />
