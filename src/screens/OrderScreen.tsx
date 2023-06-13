@@ -93,8 +93,9 @@ const OrderScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
                         <OrangeButton
                             text='Đặt món ngay'
                             onPress={navigateToListProduct}
-                            rightIcon={<Icon type={Icons.Ionicons} name='chevron-forward' color='white' />}
+                            rightIcon={<Icon type={Icons.Ionicons} name='chevron-forward' />}
                             buttonStyle={{ height: 40 }}
+                            textStyle={{ paddingBottom: 2 }}
                         />
                     </View>
                 </View>

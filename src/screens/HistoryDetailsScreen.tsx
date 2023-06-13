@@ -85,7 +85,8 @@ export default HistoryDetailsScreen
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.BACKGROUND_DEFAULT
+        backgroundColor: colors.BACKGROUND_DEFAULT,
+        paddingTop: 24
     },
     title: {
         color: colors.DEFAULT_ORANGE,

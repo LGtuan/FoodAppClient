@@ -59,7 +59,7 @@ const ListProductScreen = () => {
                 // ref={flatListRef}
                 contentContainerStyle={{
                     rowGap: 22,
-                    paddingBottom: 90,
+                    paddingBottom: 120,
                     marginTop: 32,
                     minHeight: WINDOW_HEIGHT + 320,
                 }}
