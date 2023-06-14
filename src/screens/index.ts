@@ -13,6 +13,7 @@ import FavoriteOrderScreen from "./FavoriteOrderScreen";
 import FavoriteOrderDetailsScreen from "./FavoriteOrderDetailsScreen";
 import SearchScreen from './SearchScreen'
 import EditProfileScreen from "./EditProfileScreen";
+import SettingsScreen from "./SettingsScreen";
 
 export {
     ListProductScreen,
@@ -29,5 +30,6 @@ export {
     FeatureScreen,
     FavoriteOrderDetailsScreen,
     SearchScreen,
-    EditProfileScreen
+    EditProfileScreen,
+    SettingsScreen
 }

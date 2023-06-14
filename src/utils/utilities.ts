@@ -47,7 +47,7 @@ export default {
       }
     });
   },
-  pickerImage: (crop, ratio, multi, width = DEFAULT_IMAGE_SIZE, height = DEFAULT_IMAGE_SIZE, includeBase64 = false) => {
+  pickerImage: (crop: boolean, ratio: string, multi: boolean, width = DEFAULT_IMAGE_SIZE, height = DEFAULT_IMAGE_SIZE, includeBase64 = false) => {
     let w = width;
     let h = height;
     if (ratio) {
@@ -72,7 +72,7 @@ export default {
       });
     });
   },
-  openCamera: (crop, ratio, width = DEFAULT_IMAGE_SIZE, height = DEFAULT_IMAGE_SIZE) => {
+  openCamera: (crop: boolean, ratio?: string, width = DEFAULT_IMAGE_SIZE, height = DEFAULT_IMAGE_SIZE) => {
     let w = width;
     let h = height;
     if (ratio) {
