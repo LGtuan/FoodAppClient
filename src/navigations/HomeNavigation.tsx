@@ -7,7 +7,7 @@ import {
     OrderScreen,
     FeatureScreen
 } from '@screens'
-import { Icons, Icon } from '@components'
+import { Icons, Icon, Badge } from '@components'
 import { colors } from '@constants'
 import { useSelector } from 'react-redux'
 import { RootState } from '@redux'
@@ -22,7 +22,7 @@ interface ButtonTab {
     activeIcon: string,
     inActiveIcon: string,
     component: React.FC<any>,
-    badge?: number
+    badge: number
 }
 
 const tabArr: ButtonTab[] = [
@@ -140,20 +140,7 @@ const TabBarButton: React.FC<TabBarButtonProps> = (props) => {
                         { scale: scaleBtn }
                     ]
                 }}>
-                {(item.badge != 0 && !focused) && <View style={{
-                    position: 'absolute',
-                    borderRadius: 15,
-                    backgroundColor: colors.DEFAULT_ORANGE,
-                    zIndex: 10,
-                    width: 18,
-                    height: 18,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    top: 0,
-                    right: 0
-                }}>
-                    <Text style={{ color: colors.TEXT, fontSize: 12, fontWeight: '700', paddingBottom: 1 }}>{item.badge}</Text>
-                </View>}
+                <Badge badge={item.badge} style={{ zIndex: 10, top: 0, right: 0 }} />
                 <TouchableOpacity activeOpacity={0} style={{ padding: 10 }} onPress={onPress}>
                     <Icon type={item.type}
                         name={focused ? item.activeIcon : item.inActiveIcon}
@@ -179,14 +166,17 @@ const TabBarButton: React.FC<TabBarButtonProps> = (props) => {
 const HomeNavigation = () => {
 
     const { numsNotification } = useSelector((state: RootState) => state.userSlice.user)
+    const {
+        favoriteFood,
+        favoriteOrder,
+    } = numsNotification
     const numOrderNotifi = useSelector((state: RootState) => {
         if (state.orderSlice.products.length > 0) return 1
         return 0
     })
 
     tabArr[1].badge = numOrderNotifi ?? 0
-    tabArr[2].badge = (numsNotification?.favoriteFood ?? 0) + (numsNotification?.favoriteOrder ?? 0)
-    tabArr[3].badge = numsNotification?.profile ?? 0
+    tabArr[3].badge = (favoriteFood ?? 0) + (favoriteOrder ?? 0)
 
     return (
         <BottomTab.Navigator screenOptions={{

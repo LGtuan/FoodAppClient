@@ -55,7 +55,7 @@ const OrdersHistoryScreen: React.FC<any> = ({ navigation }) => {
                     alignItems: 'center',
                     alignSelf: 'baseline'
                 }}>
-                <Icon name='chevron-left' />
+                <Icon name='chevron-left' size={24} />
                 <Text style={styles.textBold}>Lịch sử đặt hàng</Text>
             </TouchableOpacity>
             <FlatList
@@ -77,11 +77,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: colors.BACKGROUND_DEFAULT,
-        paddingTop: 24
+        paddingTop: 34
     },
     textBold: {
         fontSize: 20,
         fontWeight: '700',
-        color: 'black'
+        color: 'black',
+        paddingBottom: 2
     }
 })

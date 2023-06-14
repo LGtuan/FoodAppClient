@@ -32,7 +32,7 @@ const SearchScreen = () => {
                     alignItems: 'center',
                     alignSelf: 'baseline'
                 }}>
-                <Icon name='chevron-left' />
+                <Icon name='chevron-left' size={24} />
                 <TextInput value={search}
                     onChangeText={(text) => setSearch(text)}
                     style={{ width: WINDOW_WIDTH - 20, fontSize: 20, fontWeight: 'bold' }} />
@@ -60,11 +60,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: colors.BACKGROUND_DEFAULT,
-        paddingTop: 24
+        paddingTop: 34
     },
     textBold: {
         fontSize: 16,
         color: 'black',
-        fontWeight: '700'
+        fontWeight: '700',
+        paddingBottom: 2
     }
 })

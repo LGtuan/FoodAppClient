@@ -9,7 +9,7 @@ import {
     StyleProp
 } from 'react-native'
 import React from 'react'
-import { Icon, Icons, OrangeButton } from '@components'
+import { Badge, Icon, Icons, OrangeButton } from '@components'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useSelector } from 'react-redux'
 import { RootState } from '@redux'
@@ -19,7 +19,10 @@ import { useNavigation } from '@react-navigation/native'
 const ProfileScreen: React.FC<any> = () => {
 
     const { user } = useSelector((state: RootState) => state.userSlice)
-    const { navigate } = useNavigation<any>()
+    const { numsNotification } = user
+    const favoriteFoodBadge = numsNotification?.favoriteFood ?? 0
+    const { navigate } = useNavigation()
+
 
     const {
         image,
@@ -28,16 +31,25 @@ const ProfileScreen: React.FC<any> = () => {
     } = user
 
     const onEditProfile = () => {
-        navigate('EditProfileScreen')
+        navigate('EditProfileScreen' as never)
     }
 
     const handleLogout = async () => {
         await AsyncStorage.removeItem('user')
-        navigate('SignIn')
+        navigate('SignIn' as never)
     }
 
     const onShowHistoryOrder = () => {
-        navigate('OrderHistory')
+        navigate('OrderHistory' as never)
+    }
+
+
+    const onShowFavoriteFood = () => {
+        navigate('FavoriteFood' as never)
+    }
+
+    const onShowFavoriteOrder = () => {
+        navigate('FavoriteOrder' as never)
     }
 
     return (
@@ -80,11 +92,11 @@ const ProfileScreen: React.FC<any> = () => {
                                 badge={0}
                                 iconName='place'
                                 label='Địa chỉ nhận hàng' />
-                            <InfoComponent onPress={() => { }}
-                                badge={0}
+                            <InfoComponent onPress={onShowFavoriteFood}
+                                badge={favoriteFoodBadge}
                                 iconName='favorite'
                                 label='Món ăn yêu thích' />
-                            <InfoComponent onPress={() => { }}
+                            <InfoComponent onPress={onShowFavoriteOrder}
                                 badge={0}
                                 iconName='shopping-cart'
                                 label='Giỏ hàng tiện ích' />
@@ -154,6 +166,7 @@ const InfoComponent: React.FC<InfoComponentProps> = ({
                     fontWeight: '600',
                     fontSize: 15
                 }}>{label}</Text>
+                <Badge style={{ right: -30, top: 7 }} badge={badge} />
             </View>
             <Icon name='chevron-right' size={20} />
         </TouchableOpacity>

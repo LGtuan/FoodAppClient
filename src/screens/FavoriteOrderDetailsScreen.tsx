@@ -62,7 +62,7 @@ const FavoriteOrderDetailsScreen = ({ navigation, route }: any) => {
                         alignItems: 'center',
                         alignSelf: 'baseline',
                     }}>
-                    <Icon name='chevron-left' size={42} />
+                    <Icon name='chevron-left' size={24} />
                     <Text style={styles.textBold}>Chi tiết</Text>
                 </TouchableOpacity>
                 <OrangeButton
@@ -132,13 +132,14 @@ export default FavoriteOrderDetailsScreen
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.BACKGROUND_DEFAULT
+        backgroundColor: colors.BACKGROUND_DEFAULT,
+        paddingTop: 34
     },
     textBold: {
         fontSize: 17,
         color: 'black',
         fontWeight: '700',
-
+        paddingBottom: 2
     },
     removeBtn: {
         position: 'absolute',
