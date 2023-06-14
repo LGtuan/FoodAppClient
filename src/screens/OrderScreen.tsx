@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: colors.BACKGROUND_DEFAULT,
-        paddingTop: 24
+        paddingTop: 34
     },
     title: {
         color: colors.TEXT,
@@ -122,7 +122,8 @@ const styles = StyleSheet.create({
     textBold: {
         fontSize: 16,
         color: 'black',
-        fontWeight: '700'
+        fontWeight: '700',
+        paddingBottom: 2
     },
     footer: {
         paddingHorizontal: 15,

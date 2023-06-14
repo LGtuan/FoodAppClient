@@ -12,14 +12,16 @@ import { getFavoriteProduct } from '@services'
 import { Icon, Icons, OrangeButton, ProductItem } from '@components'
 import { colors } from '@constants'
 import Spinner from 'react-native-spinkit'
+import { useNavigation } from '@react-navigation/native'
 
-const FavoriteFoodScreen: React.FC<any> = ({ navigation }) => {
+const FavoriteFoodScreen: React.FC<any> = () => {
 
     const [favoriteList, setFavoriteList] = useState([])
     const { favoriteProductIds, _id, token } = useSelector((state: RootState) => state.userSlice.user)
     const [isLoading, setIsLoading] = useState(true)
 
     const dispatch = useDispatch()
+    const { canGoBack, navigate, goBack } = useNavigation()
 
     useEffect(() => {
         getFavoriteProduct(_id, favoriteProductIds, token as string)
@@ -31,11 +33,11 @@ const FavoriteFoodScreen: React.FC<any> = ({ navigation }) => {
     }, [])
 
     const onGoBack = () => {
-        if (navigation.canGoBack()) navigation.goBack()
+        if (canGoBack()) goBack()
     }
 
     const navigateToListProduct = () => {
-        navigation.navigate('ListProduct')
+        navigate('ListProduct' as never)
     }
 
     return (
@@ -47,7 +49,7 @@ const FavoriteFoodScreen: React.FC<any> = ({ navigation }) => {
                     alignItems: 'center',
                     alignSelf: 'baseline'
                 }}>
-                <Icon name='chevron-left' size={42} />
+                <Icon name='chevron-left' size={24} />
                 <Text style={styles.textBold}>Món ăn yêu thích</Text>
             </TouchableOpacity>
             {isLoading && <View style={{
@@ -90,11 +92,13 @@ export default FavoriteFoodScreen
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.BACKGROUND_DEFAULT
+        backgroundColor: colors.BACKGROUND_DEFAULT,
+        paddingTop: 34
     },
     textBold: {
         fontSize: 16,
         color: 'black',
-        fontWeight: '700'
+        fontWeight: '700',
+        paddingBottom: 2
     }
 })

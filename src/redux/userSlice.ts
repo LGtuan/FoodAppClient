@@ -24,6 +24,7 @@ export const login = createAsyncThunk(
                 await AsyncStorage.setItem('user', JSON.stringify({ _id: user._id, token: user.token }))
 
                 navigateToHome()
+                console.log(user)
                 return user
             }
 
@@ -85,9 +86,9 @@ const userSlice = createSlice({
             state.error = action.payload
         },
         clearNumsNotification: (state, action) => {
-            let profile = action.payload.profile
-            let favoriteFood = action.payload.favoriteFood
-            let favoriteOrder = action.payload.favoriteOrder
+            let profile = action.payload?.profile
+            let favoriteFood = action.payload?.favoriteFood
+            let favoriteOrder = action.payload?.favoriteOrder
 
             if (profile) state.user.numsNotification.profile = 0
             if (favoriteFood) state.user.numsNotification.favoriteFood = 0
@@ -96,16 +97,20 @@ const userSlice = createSlice({
         favoriteProduct: (state, action) => {
             let productId = action.payload
             if (!state.user.favoriteProductIds.includes(productId)) {
-                state.user.numsNotification.favoriteFood += 1
+                let favoriteFoodNum = state.user.numsNotification.favoriteFood
+                state.user.numsNotification.favoriteFood = (favoriteFoodNum ?? 0) + 1
                 state.user.favoriteProductIds.push(productId)
             }
         },
         unFavoriteProduct: (state, action) => {
             let productId = action.payload
+            if (state.user.numsNotification.favoriteFood <= 0) return
             if (state.user.favoriteProductIds.includes(productId)) {
                 let index = state.user.favoriteProductIds.indexOf(productId)
-                state.user.favoriteProductIds.splice(index, 1)
-                state.user.numsNotification.favoriteFood -= 1
+                if (index) {
+                    state.user.favoriteProductIds.splice(index, 1)
+                    state.user.numsNotification.favoriteFood -= 1
+                }
             }
         },
     },

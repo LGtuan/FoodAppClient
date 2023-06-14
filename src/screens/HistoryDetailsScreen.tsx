@@ -59,7 +59,7 @@ const HistoryDetailsScreen: React.FC<any> = ({ navigation, route }) => {
                     alignItems: 'center',
                     alignSelf: 'baseline'
                 }}>
-                <Icon name='chevron-left' size={42} />
+                <Icon name='chevron-left' size={24} />
                 <Text style={styles.textBold}>Chi tiết</Text>
             </TouchableOpacity>
             <FlatList
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: colors.BACKGROUND_DEFAULT,
-        paddingTop: 24
+        paddingTop: 34
     },
     title: {
         color: colors.DEFAULT_ORANGE,
@@ -98,7 +98,8 @@ const styles = StyleSheet.create({
     textBold: {
         fontSize: 16,
         color: 'black',
-        fontWeight: '700'
+        fontWeight: '700',
+        paddingBottom: 2
     },
     footer: {
         paddingHorizontal: 15,

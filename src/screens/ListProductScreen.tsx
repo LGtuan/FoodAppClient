@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
         top: 0,
         zIndex: 10,
         width: '100%',
-        height: 420,
+        height: 444,
         backgroundColor: colors.BACKGROUND_DEFAULT,
         justifyContent: 'space-between',
     }

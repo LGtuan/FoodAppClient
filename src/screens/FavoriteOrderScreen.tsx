@@ -122,12 +122,12 @@ const FavoriteOrderScreen: React.FC<any> = ({ navigation }) => {
                         alignItems: 'center',
                         alignSelf: 'baseline',
                     }}>
-                    <Icon name='chevron-left' size={42} />
-                    <Text style={styles.textBold}>Giỏ hàng yêu thích</Text>
+                    <Icon name='chevron-left' size={24} />
+                    <Text style={styles.textBold}>Giỏ hàng tiện ích</Text>
                 </TouchableOpacity>
                 <OrangeButton
                     text='Tạo'
-                    rightIcon={<Icon name='add-circle-outline' color='white' size={20} />}
+                    rightIcon={<Icon name='add-circle-outline' size={18} />}
                     textStyle={{ fontSize: 15, fontWeight: '500' }}
                     buttonStyle={{
                         width: 62,
@@ -149,7 +149,7 @@ const FavoriteOrderScreen: React.FC<any> = ({ navigation }) => {
                         <OrangeButton
                             text='Tạo ngay'
                             onPress={navigateToListProduct}
-                            rightIcon={<Icon type={Icons.Ionicons} name='chevron-forward' color='white' />}
+                            rightIcon={<Icon type={Icons.Ionicons} name='chevron-forward' size={20} />}
                             buttonStyle={{ height: 40 }}
                         />
                     </View>
@@ -183,11 +183,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: colors.BACKGROUND_DEFAULT,
+        paddingTop: 34
     },
     textBold: {
         fontSize: 17,
         color: 'black',
-        fontWeight: '700'
+        fontWeight: '700',
+        paddingBottom: 2
     },
     centeredModal: {
         backgroundColor: 'white',
