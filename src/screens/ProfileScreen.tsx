@@ -82,6 +82,7 @@ const ProfileScreen: React.FC<any> = () => {
                     </View>
                 </View>
                 <View>
+
                     <GroupInfo style={{ marginTop: 20 }}>
                         <>
                             <InfoComponent onPress={() => { }}

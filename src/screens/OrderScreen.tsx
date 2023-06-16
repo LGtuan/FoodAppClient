@@ -23,12 +23,14 @@ const ListFooter: React.FC<any> = ({ foodTotal, onCheckout }) => {
                     <Text style={styles.textBold}>Dịch vụ:</Text>
                     <Text style={styles.textBold}>40k</Text>
                 </View>
+                <Text style={{ fontSize: 14, color: colors.GRAY }}>Lưu ý: Thanh toán khi nhận hàng</Text>
                 <View style={{
                     backgroundColor: 'black',
                     height: 1,
                     marginVertical: 12,
                     marginHorizontal: 20
                 }} />
+
                 <View style={styles.lineInfo}>
                     <Text style={[styles.textBold, { fontSize: 20 }]}>Tổng:</Text>
                     <Text style={[styles.textBold, { fontSize: 20 }]}>{foodTotal}k</Text>
