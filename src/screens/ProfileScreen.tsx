@@ -87,7 +87,7 @@ const ProfileScreen: React.FC<any> = () => {
                             <InfoComponent onPress={() => { }}
                                 badge={0}
                                 iconName='payment'
-                                label='Phương thức thanh toán ' />
+                                label='Phương thức thanh toán' />
                             <InfoComponent onPress={() => { }}
                                 badge={0}
                                 iconName='place'
