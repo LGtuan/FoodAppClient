@@ -63,7 +63,7 @@ const ProfileScreen: React.FC<any> = () => {
                         paddingVertical: 12
                     }}>Profile</Text>
                     <View style={{ flexDirection: 'row' }}>
-                        <Image source={image ? { uri: image } : images['defaultImg']}
+                        <Image source={image ? { uri: `${URL}${image}` } : images['defaultImg']}
                             style={styles.avatar} />
                         <TouchableOpacity style={{
                             alignItems: 'center',
