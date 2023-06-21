@@ -15,6 +15,7 @@ import {
     FavoriteOrderDetailsScreen,
     SearchScreen,
     EditProfileScreen,
+    PopularScreen,
 
 } from '@screens'
 import { useSelector, useDispatch } from 'react-redux'
@@ -126,6 +127,12 @@ const RootNavigation = () => {
                     <Stack.Screen
                         name='EditProfileScreen'
                         component={EditProfileScreen}
+                        options={{
+                            animation: 'slide_from_right',
+                        }} />
+                    <Stack.Screen
+                        name='PopularScreen'
+                        component={PopularScreen}
                         options={{
                             animation: 'slide_from_right',
                         }} />

@@ -7,7 +7,7 @@ import { colors } from '@constants'
 import { HorizontalProductItem, Icon, ProductItem } from '@components'
 import { useNavigation } from '@react-navigation/native'
 
-const VoucherScreen = () => {
+const PopularScreen = () => {
     const navigation = useNavigation<any>();
     const [populateList, setPopulateList] = useState<ProductModel[]>([])
 
@@ -27,13 +27,27 @@ const VoucherScreen = () => {
                     alignSelf: 'baseline'
                 }}>
                 <Icon name='chevron-left' size={42} />
-                <Text style={styles.textBold}>Voucher</Text>
+                <Text style={styles.textBold}>Món ăn yêu thích</Text>
             </TouchableOpacity>
+            <Text style={styles.title}>Món ăn được order nhiều nhất</Text>
+            <View style={styles.box1}>
+                <FlatList
+                    data={populateList}
+                    contentContainerStyle={{
+                        paddingEnd: 15
+                    }}
+                    renderItem={({ item }) => (
+                        <ProductItem item={item} />
+                    )}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                />
+            </View>
         </View>
     )
 }
 
-export default React.memo(VoucherScreen)
+export default React.memo(PopularScreen)
 
 const styles = StyleSheet.create({
     container: {
@@ -45,6 +59,9 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: colors.TEXT,
         fontWeight: '700',
+        marginTop: 20,
+    },
+    box1: {
         marginTop: 20,
     },
     textBold: {

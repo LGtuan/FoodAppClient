@@ -47,7 +47,7 @@ const FeatureScreen = () => {
                     </TouchableOpacity>
                     <TouchableOpacity
                         style={styles.btn}
-                        onPress={() => navigate('Voucher')}>
+                        onPress={() => navigate('PopularScreen')}>
                         <Image source={images['hamburger']} style={styles.image} />
                         <Text style={styles.textBold} >Đề xuất món ăn</Text>
                     </TouchableOpacity>
