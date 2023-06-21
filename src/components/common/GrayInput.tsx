@@ -1,10 +1,18 @@
-import { StyleSheet, View, TextInput, TextInputProps } from 'react-native'
+import {
+    StyleSheet,
+    View,
+    TextInput,
+    TextInputProps,
+    TextStyle,
+    StyleProp,
+    ViewStyle
+} from 'react-native'
 import Icon from './Icon'
 import React from 'react'
 
 interface Props {
-    inputWrapStyle?: any,
-    inputStyle?: any,
+    inputWrapStyle?: StyleProp<ViewStyle>,
+    inputStyle?: StyleProp<TextStyle>,
     extraProps: TextInputProps,
     leftIcon?: JSX.Element,
     rightIcons?: JSX.Element
