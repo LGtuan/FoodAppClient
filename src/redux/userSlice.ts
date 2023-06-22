@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { UserModel } from './models'
-import { URL } from '../utils/service'
+import { URL, USER_URL } from '../utils/service'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export const login = createAsyncThunk(
@@ -58,6 +58,27 @@ export const register = createAsyncThunk(
         }
     })
 
+
+export const edit = createAsyncThunk("user/edit",async ({_id,user}:any)=>{
+    try{
+        const data = await fetch(`${USER_URL}/update/${_id}`,{
+            method:"POST",
+            headers:{
+                'Content-Type':"application/json",
+            },
+            body:JSON.stringify(user)
+        })
+
+        if(data.status === 200){
+            const user = await data.json();
+            return user.data
+        }else{
+            return { error: 'lỗi' } 
+        }
+    }catch(error){
+        console.log(error);
+    }
+})  
 const initialState = {
     user: {
         _id: '',
@@ -139,6 +160,19 @@ const userSlice = createSlice({
                 state.loading = false
             })
             .addCase(register.rejected, (state, action: any) => {
+                state.error = action.payload
+                state.loading = false
+            }).addCase(edit.pending,(state,action)=>{
+                state.loading = true
+            }).addCase(edit.fulfilled, (state, action: any) => {
+                if (action.payload.error) {
+                    state.error = action.payload.error
+                } else {
+                    state.user = action.payload
+                }
+                state.loading = false
+            })
+            .addCase(edit.rejected, (state, action: any) => {
                 state.error = action.payload
                 state.loading = false
             })
