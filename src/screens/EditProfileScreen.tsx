@@ -10,14 +10,15 @@ import React, { useState } from 'react'
 import { colors, images } from '@constants'
 import { GrayInput, Icon, OrangeButton } from '@components'
 import { useNavigation } from '@react-navigation/native'
-import { RootState } from '@redux'
-import { useSelector } from 'react-redux'
+import { AppDispatch, RootState, edit } from '@redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { utilities } from '@utils'
 
 
 const EditProfileScreen = () => {
 
-    const { name,
+    const ditpatch = useDispatch<AppDispatch>();
+    const { _id, name,
         image,
         email
     } = useSelector((state: RootState) => state.userSlice.user)
@@ -42,6 +43,16 @@ const EditProfileScreen = () => {
                 })
             })
 
+    }
+
+    const handlerChange = () => {
+        const user = {
+            name: nameInput,
+            email: emailInput
+        }
+        ditpatch(edit({
+            _id, user
+        }))
     }
 
     return (
@@ -85,7 +96,7 @@ const EditProfileScreen = () => {
                             <OrangeButton text='Xác nhận thay đổi'
                                 buttonStyle={{ marginTop: 35 }}
 
-                                onPress={() => { }} />
+                                onPress={handlerChange} />
                         </View>
                     </View>
                 </View>
